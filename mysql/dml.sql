@@ -2,19 +2,19 @@ show databases;
 use computer_repair_service;
 select * from customer;
 
--- insert into customer(last_name, rest_of_name, email, phone) 
+-- INSERT into customer(last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
 	('Potter', 'Harry', 'hp@gmail.com', '3456789012'),
 	('Parker', 'Peter', 'pp@gmail.com', '4567890123'),
 	('Jane', 'Mary', 'mj@gmail.com', '5678901234');
 
--- insert into device_brand(brand_name)
+-- INSERT into device_brand(brand_name)
 	values('Apple'),
     ('Samsung'),
     ('Microsoft'),
     ('Google');
 
--- insert into device_category(device_category_name, device_brand_id)
+-- INSERT into device_category(device_category_name, device_brand_id)
 	values('smartphone', 1),
     ('smartphone', 2),
     ('smartphone', 4),
@@ -25,7 +25,7 @@ select * from customer;
     ('laptop', 3),
     ('laptop', 4);
     
--- insert into device(device_name, device_category_id)
+-- INSERT into device(device_name, device_category_id)
 	values('iPhone 14', 1),
     ('iPhone 13', 1),
     ('Galaxy S20', 2),
@@ -45,8 +45,8 @@ select * from customer;
     ('Chromebook 5', 9),
     ('Chromebook 7', 9);
 
--- alter table customer_device modify serial_number varchar(45); -- changed column type from int to varchar
--- insert into customer_device(customer_id, device_id, serial_number)
+-- ALTER table customer_device modify serial_number varchar(45); -- changed column type from int to varchar
+-- INSERT into customer_device(customer_id, device_id, serial_number)
 	values(1, 1,'iphone14-001'),
     (1, 13,'macbookpro-001'),
     (2, 3,'galaxys20-002'),
@@ -55,45 +55,47 @@ select * from customer;
     (3, 17,'chromebook5-003'),
     (4, 11,'surface1-004');
 
--- insert into technician(last_name, rest_of_name, email, phone) 
+-- INSERT into technician(last_name, rest_of_name, email, phone) 
 	values('Stark', 'Tony', 'ironman@marvel.com', '1112223333'),
     ('Rogers', 'Steve', 'captainamerica@marvel.com', '2223334444'),
     ('Thor', null, 'odinson@marvel.com', '3334445555');
        
--- insert into service(device_id, service_description, price)
+-- INSERT into service(device_id, service_description, price)
 	values(1, 'Screen Replacement', 200.00),
     (1, 'Battery Replacement', 70.00),
     (2, 'Malware Removal', 400.00);
--- insert into service(device_id, service_description, price)
+    
+-- INSERT into service(device_id, service_description, price)
     values(3, 'Screen Replacement', 100.00);
     
--- insert into service_technician(service_id, technician_id, skill_level)
+-- INSERT into service_technician(service_id, technician_id, skill_level)
 	values(1, 2, 1),
     (2, 3, 3),
     (3, 1, 2);
--- insert into service_technician(service_id, technician_id, skill_level)
+    
+-- INSERT into service_technician(service_id, technician_id, skill_level)
 	values(4, 2, 2);
     
--- alter table service_request drop column status; -- dropped column
--- alter table service_request modify amount decimal(10,2); -- made field nullable
--- insert into service_request(customer_device_id, service_id, created_timestamp, service_request_description)
+-- ALTER table service_request drop column status; -- dropped column
+-- ALTER table service_request modify amount decimal(10,2); -- made field nullable
+-- INSERT into service_request(customer_device_id, service_id, created_timestamp, service_request_description)
 	values(1, 1, '2023-01-23 12:45:56', 'please do screen replacement for my iPhone14. Thanks Mark Shelton'),
     (2, 3, '2023-01-27 12:45:56', 'please do malware removal from my Macbook Pro. Thanks Mark Shelton'),
     (3, 4, '2023-02-15 12:45:56', 'please do screen replacement for my Galaxy S20. Thanks Mark Shelton');
     
--- update service_request 
-	set service_request_description = 'please do screen replacement for my Galaxy S20. Thanks Harry Potter' 
-    where service_request_id = 3;
+-- UPDATE service_request 
+	SET service_request_description = 'please do screen replacement for my Galaxy S20. Thanks Harry Potter' 
+    WHERE service_request_id = 3;
     
--- alter table service_request_appointment add service_request_appointment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY; -- added a new column as primary key (not likely to be done in a real app)
--- alter table service_request_appointment modify technician_notes varchar(400) -- made field nullable
--- insert into service_request_appointment(service_request_id, technician_id, appointment_timestamp)
+-- ALTER table service_request_appointment add service_request_appointment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY; -- added a new column as primary key (not likely to be done in a real app)
+-- ALTER table service_request_appointment modify technician_notes varchar(400) -- made field nullable
+-- INSERT into service_request_appointment(service_request_id, technician_id, appointment_timestamp)
 	values(1, 2, '2023-01-25 11:00:00'),
     (1, 2, '2023-01-27 12:00:00'),
     (2, 1, '2023-01-29 11:00:00'),
 	(3, 2, '2023-02-18 11:00:00');
 
--- insert into service_request_payment(service_request_id, amount, payment_timestamp, payment_confirmation_number)
+-- INSERT into service_request_payment(service_request_id, amount, payment_timestamp, payment_confirmation_number)
 	values(1, 200.00, '2023-01-27 12:00:00', 'abc123xyz')
     
 -- UPDATE service_request 
@@ -147,21 +149,25 @@ WHERE service_id = 1;
 WHERE service_request_id = 3;
 
 
--- inner join
-SELECT c.*, cd.* from customer c 
+-- INNER join - Returns only the matching rows from both tables based on the join condition.
+SELECT c.*, cd.* 
+FROM customer c 
 INNER JOIN customer_device cd
 ON c.customer_id = cd.customer_id;		
 
 -- LEFT join
 SELECT d.device_id, d.device_name, d.device_category_id, s.service_id, s.service_description, s.price 
-FROM device d LEFT JOIN service s 
+FROM device d 
+LEFT JOIN service s 
 ON d.device_id = s.device_id;
 
 -- RIGHT join
-SELECT s.service_id, s.service_description, s.price, d.device_id, d.device_name, d.device_category_id FROM service s
-RIGHT JOIN device d ON s.device_id = d.device_id;
+SELECT s.service_id, s.service_description, s.price, d.device_id, d.device_name, d.device_category_id 
+FROM service s
+RIGHT JOIN device d 
+ON s.device_id = d.device_id;
 
--- FULL join
+-- FULL join - Returns all rows from both tables and includes NULL values for unmatched rows
 SELECT s.service_id, s.service_description, s.price, sr.service_request_id, sr.customer_device_id, sr.created_timestamp, sr.amount
 FROM service s 
 LEFT JOIN service_request sr ON s.service_id = sr.service_id
@@ -170,13 +176,13 @@ SELECT s.service_id, s.service_description, s.price, sr.service_request_id, sr.c
 FROM service_request sr 
 RIGHT JOIN service s ON sr.service_id = s.service_id;
 
--- CROSS JOIN
+-- CROSS JOIN - it combines each row from the first table with each row from the second table.
 SELECT sr.service_request_id, sr.customer_device_id, sr.amount, srp.payment_confirmation_number, srp.payment_timestamp
 FROM service_request sr
 CROSS JOIN service_request_payment srp;
 
 -- get the count of device_category for each brand
-SELECT device_brand_id, count(*)
+SELECT device_brand_id, count(*) AS device_category_count
 FROM device_category
 GROUP BY device_brand_id;
 
@@ -193,8 +199,9 @@ GROUP BY s.service_id;
 
 --  customer device count for each device 
 SELECT d.device_id AS d_devc_id, cd.device_id AS c_devc_id, count(cd.device_id) AS registered_customer_device_count
-FROM customer_device cd RIGHT JOIN device d ON 
-d.device_id = cd.device_id 
+FROM customer_device cd 
+RIGHT JOIN device d 
+ON d.device_id = cd.device_id 
 GROUP BY d.device_id;
 
 -- get the service request count by device brands
@@ -232,7 +239,8 @@ GROUP BY device_id;
 
 -- get number of services priced > 100, by device
 SELECT device_id, count(*) AS offered_services_count
-FROM service WHERE price >100 
+FROM service 
+WHERE price >100 
 GROUP BY device_id; 
 
 -- display device names and number of services offered, priced > 100 group by device
