@@ -1,13 +1,13 @@
 show databases;
 use computer_repair_service;
-select * from device_category;
+select * from customer;
 
 -- insert into customer(last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
 	('Potter', 'Harry', 'hp@gmail.com', '3456789012'),
 	('Parker', 'Peter', 'pp@gmail.com', '4567890123'),
 	('Jane', 'Mary', 'mj@gmail.com', '5678901234');
-    
+
 -- insert into device_brand(brand_name)
 	values('Apple'),
     ('Samsung'),
@@ -97,55 +97,71 @@ select * from device_category;
 	values(1, 200.00, '2023-01-27 12:00:00', 'abc123xyz')
     
 -- UPDATE service_request 
-set last_updated_timestamp = '2023-01-27 12:00:00', 
+SET last_updated_timestamp = '2023-01-27 12:00:00', 
 completed_timestamp = '2023-01-27 12:00:00', 
 amount = 200.00 
-where service_request_id = 1;
+WHERE service_request_id = 1;
 
 -- UPDATE service_request 
-set last_updated_timestamp = '2023-01-27 12:00:00'
-where service_request_id = 2;
+SET last_updated_timestamp = '2023-01-27 12:00:00'
+WHERE service_request_id = 2;
 
 -- UPDATE service_request 
-set last_updated_timestamp = '2023-02-18 11:00:00'
-where service_request_id = 3;
+SET last_updated_timestamp = '2023-02-18 11:00:00'
+WHERE service_request_id = 3;
 
 -- UPDATE customer 
-set phone = '222244446'
-where customer_id = 1;
+SET phone = '222244446'
+WHERE customer_id = 1;
 
 -- UPDATE service
-set price = 300
-where service_id = 1;
+SET price = 300
+WHERE service_id = 1;
 
 -- UPDATE service_request_appointment
-set technician_notes = 'Ordered new screen'
-where service_request_id = 3;
+SET technician_notes = 'Ordered new screen'
+WHERE service_request_id = 3;
 
 -- DELETE from device 
-where device_id = 12;
+WHERE device_id = 12;
 
 -- DELETE from customer_device
-where customer_id = 4;
+WHERE customer_id = 4;
 
 -- DELETE from customer
-where customer_id = 4;
+WHERE customer_id = 4;
+
+-- DELETE from device_brand
+WHERE device_brand_id = 2;
+
+-- DELETE from device_categoty
+WHERE device_category_id = 3;
+
+-- DELETE from device_categoty
+WHERE device_category_id = 2;
+
+-- DELETE from service
+WHERE service_id = 1;
+
+-- DELETE from service_request
+WHERE service_request_id = 3;
 
 
--- this is inner join
-SELECT c.*, cd.* from customer c, customer_device cd
-where c.customer_id = cd.customer_id;		
+-- inner join
+SELECT c.*, cd.* from customer c 
+INNER JOIN customer_device cd
+ON c.customer_id = cd.customer_id;		
 
--- this is LEFT join
+-- LEFT join
 SELECT d.device_id, d.device_name, d.device_category_id, s.service_id, s.service_description, s.price 
 FROM device d LEFT JOIN service s 
 ON d.device_id = s.device_id;
 
--- this is RIGHT join
+-- RIGHT join
 SELECT s.service_id, s.service_description, s.price, d.device_id, d.device_name, d.device_category_id FROM service s
 RIGHT JOIN device d ON s.device_id = d.device_id;
 
--- this is FULL join
+-- FULL join
 SELECT s.service_id, s.service_description, s.price, sr.service_request_id, sr.customer_device_id, sr.created_timestamp, sr.amount
 FROM service s 
 LEFT JOIN service_request sr ON s.service_id = sr.service_id
@@ -154,7 +170,7 @@ SELECT s.service_id, s.service_description, s.price, sr.service_request_id, sr.c
 FROM service_request sr 
 RIGHT JOIN service s ON sr.service_id = s.service_id;
 
--- this is CROSS JOIN
+-- CROSS JOIN
 SELECT sr.service_request_id, sr.customer_device_id, sr.amount, srp.payment_confirmation_number, srp.payment_timestamp
 FROM service_request sr
 CROSS JOIN service_request_payment srp;
@@ -165,24 +181,24 @@ FROM device_category
 GROUP BY device_brand_id;
 
 -- get the timestamp of most recent appointment for each service request
-SELECT service_request_id, max(appointment_timestamp) last_updated_at
+SELECT service_request_id, max(appointment_timestamp) AS last_updated_at
 FROM service_request_appointment
 GROUP BY service_request_id;
 
 --  technician_count for each service
-select s.service_id, count(*) technician_count
+SELECT s.service_id, count(*) AS technician_count
 FROM service_technician st RIGHT JOIN service s ON 
 st.service_id = s.service_id
 GROUP BY s.service_id;
 
 --  customer device count for each device 
-select d.device_id , cd.device_id, count(cd.device_id) registered_customer_device_count
+SELECT d.device_id AS d_devc_id, cd.device_id AS c_devc_id, count(cd.device_id) AS registered_customer_device_count
 FROM customer_device cd RIGHT JOIN device d ON 
-d.device_id = cd.device_id
+d.device_id = cd.device_id 
 GROUP BY d.device_id;
 
 -- get the service request count by device brands
-SELECT db.device_brand_id, count(*) service_request_count
+SELECT db.device_brand_id, count(*) AS service_request_count
 FROM service_request sr, customer_device cd, device d, device_category dc, device_brand db
 WHERE sr.customer_device_id = cd.customer_device_id
 AND cd.device_id = d.device_id
@@ -207,6 +223,37 @@ SELECT technician_id, avg(skill_level) avg_skill_level
 FROM service_technician
 GROUP BY technician_id
 HAVING avg_skill_level >= 2;
+
+select * from service;
+-- get number of services by device
+SELECT device_id, count(*) AS offered_services_count
+FROM service
+GROUP BY device_id;
+
+-- get number of services priced > 100, by device
+SELECT device_id, count(*) AS offered_services_count
+FROM service WHERE price >100 
+GROUP BY device_id; 
+
+-- display device names and number of services offered, priced > 100 group by device
+SELECT d.device_id, count(*) AS offered_services_count, MIN(d.device_name) AS device_name
+FROM service s, device d 
+WHERE s.price > 0 
+AND s.device_id = d.device_id
+GROUP BY s.device_id;
+
+-- display device names and number of services offered group by device that have more than one service offering
+SELECT d.device_id, count(*) AS offered_services_count, MIN(d.device_name) AS device_name
+FROM service s, device d 
+WHERE s.device_id = d.device_id
+GROUP BY s.device_id
+HAVING count(*) > 1;
+
+-- get service_request count group by their created timestamp in month/year format, having > 1 service request
+SELECT DATE_FORMAT(sr.created_timestamp, "%Y-%m") AS created_month, count(*) AS service_req_count
+FROM service_request sr
+GROUP BY DATE_FORMAT(sr.created_timestamp, "%Y-%m")
+HAVING count(*) > 1;
 
 -- join all tables
 SELECT c.rest_of_name, c.last_name, c.email, c.phone, d.device_name, dc.device_category_name, dbr.brand_name,
