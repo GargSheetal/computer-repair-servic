@@ -16,6 +16,7 @@ public class Main {
 		
 		// Retrieve all customers
 		List<Customer> custList = customerService.getAll();
+		System.out.println("All Customers:");
 		for(Customer customer: custList) {
 			System.out.println(customer.getCustomerId() + " : " + customer.getLastName() + " : " + 
 								customer.getRestOfName() + " : " + customer.getEmail() + " : " + customer.getEmail());
