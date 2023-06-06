@@ -9,9 +9,15 @@ public class Customer {
 	private String phone;
 	
 	public Customer() {
-		super();
 	}
 
+	public Customer(String lastName, String restOfName, String email, String phone) {
+		this.lastName = lastName;
+		this.restOfName = restOfName;
+		this.email = email;
+		this.phone = phone;
+	}
+	
 	public Customer(int customerId, String lastName, String restOfName, String email, String phone) {
 		this.customerId = customerId;
 		this.lastName = lastName;
