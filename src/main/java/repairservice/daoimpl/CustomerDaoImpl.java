@@ -12,7 +12,10 @@ import repairservice.idao.ICustomerDao;
 import repairservice.model.Customer;
 
 public class CustomerDaoImpl implements ICustomerDao {
-
+	
+	ResultSet rs = null;
+	Customer customer = null;
+	
 	public Customer create(Customer customer) {
 
 		String query = "INSERT into customer(last_name, rest_of_name, email, phone) values(?,?,?,?)";
@@ -36,14 +39,11 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return customer;
 	}
 
-	public Customer getById(int id) {
+	public Customer getById(int customerId) {
 		String query = "SELECT * from customer where customer_id=?"; 
-
-		ResultSet rs = null;
-		Customer customer = null;
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
-			ps.setInt(1, id);
+			ps.setInt(1, customerId);
 			// execute the query
 			rs = ps.executeQuery();
 
@@ -65,12 +65,11 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	public List<Customer> getAll() {
 		List<Customer> custList = new ArrayList<>();
-		Customer customer = null;
 		String query = "SELECT * from customer"; 
 
 		try(Connection conn = ConnectionPool.getConnection();
-				PreparedStatement st = conn.prepareStatement(query)) {
-			ResultSet rs = st.executeQuery();
+			   PreparedStatement st = conn.prepareStatement(query)) {
+			rs = st.executeQuery();
 			while(rs.next())
 			{
 				customer = new Customer(rs.getInt("customer_id"), rs.getString("last_name"), rs.getString("rest_of_name"), rs.getString("email"), rs.getString("phone"));
@@ -84,7 +83,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 	public Customer update(Customer customer) {
-		String query = "UPDATE customer SET last_name=?, rest_of_name=?, email=?, phone=? WHERE id=?"; 
+		String query = "UPDATE customer SET last_name=?, rest_of_name=?, email=?, phone=? WHERE customer_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, customer.getLastName());
@@ -102,25 +101,27 @@ public class CustomerDaoImpl implements ICustomerDao {
 		return customer;
 	}
 
-	public int delete(int id) {
+	public int delete(int customerId) {
 		String query = "DELETE from customer WHERE customer_id = ?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			// Set the value for the prepared statement
-			ps.setInt(1, id);
+			ps.setInt(1, customerId);
 			int count = ps.executeUpdate();
 			System.out.println("\n" + count + " row/s deleted.");
 			if(count>0) {
-				System.out.println("Customer with ID: " + id + " deleted successfully");
+				System.out.println("Customer with ID: " + customerId + " deleted successfully");
 			} 
 			else {
-				System.out.println("No customer with ID: " + id + " found");
+				System.out.println("No customer with ID: " + customerId + " found");
 			}
 		} catch (SQLException e) {
 			System.out.println("Error deleting customer: " + e.getMessage());
 			e.printStackTrace();
 		}
-		return id;
+		return customerId;
 	}
 
 }
+
+

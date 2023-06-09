@@ -14,13 +14,11 @@ public class CustomerService {
 	}
 	
 	public Customer create(Customer customer) {
-		customerDao.create(customer);
-		System.out.println("Customer created successfully");
-		return customer;
+		return customerDao.create(customer);
 	}
 	
-	public Customer getById(int id) {
-		return customerDao.getById(id);
+	public Customer getById(int customerId) {
+		return customerDao.getById(customerId);
 	}
 	
 	public List<Customer> getAll() {
@@ -31,8 +29,10 @@ public class CustomerService {
 		return customerDao.update(customer);
 	}
 	
-	public int delete(int id) {
-		customerDao.delete(id);
-		return id;
+	public int delete(int customerId) {
+		customerDao.delete(customerId);
+		return customerId;
 	}
 }
+
+

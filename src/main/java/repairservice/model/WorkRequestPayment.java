@@ -2,29 +2,39 @@ package repairservice.model;
 
 import java.util.Date;
 
-public class ServiceRequestPayment {
+public class WorkRequestPayment {
 
-	private ServiceRequest serviceRequest;	// Foreign key reference
+	private int workRequestPaymentId;
+	private WorkRequest workRequest;	// Foreign key reference
 	private String paymentConfirmationNumber;
 	private Date paymentTimestamp;
 	private double amount;
 	
-	public ServiceRequestPayment() {}
-	
-	public ServiceRequestPayment(ServiceRequest serviceRequest, String paymentConfirmationNumber, Date paymentTimestamp,
-			double amount) {
-		this.serviceRequest = serviceRequest;
+	public WorkRequestPayment() {}
+
+	public WorkRequestPayment(int workRequestPaymentId, WorkRequest workRequest, String paymentConfirmationNumber,
+			Date paymentTimestamp, double amount) {
+		this.workRequestPaymentId = workRequestPaymentId;
+		this.workRequest = workRequest;
 		this.paymentConfirmationNumber = paymentConfirmationNumber;
 		this.paymentTimestamp = paymentTimestamp;
 		this.amount = amount;
 	}
 
-	public ServiceRequest getServiceRequest() {
-		return serviceRequest;
+	public int getWorkRequestPaymentId() {
+		return workRequestPaymentId;
 	}
 
-	public void setServiceRequest(ServiceRequest serviceRequest) {
-		this.serviceRequest = serviceRequest;
+	public void setWorkRequestPaymentId(int workRequestPaymentId) {
+		this.workRequestPaymentId = workRequestPaymentId;
+	}
+
+	public WorkRequest getWorkRequest() {
+		return workRequest;
+	}
+
+	public void setWorkRequest(WorkRequest workRequest) {
+		this.workRequest = workRequest;
 	}
 
 	public String getPaymentConfirmationNumber() {

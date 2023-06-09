@@ -15,6 +15,8 @@ import repairservice.model.Device;
 
 public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 
+	ResultSet rs = null;
+	
 	@Override
 	public CustomerDevice create(CustomerDevice custDevice) {
 		String query = "INSERT into customer_device('serial_number', 'customer_id', 'device_id') values(?,?,?)";
@@ -22,7 +24,7 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query)) {
 			
-			ps.setInt(1, custDevice.getSerialNumber());
+			ps.setString(1, custDevice.getSerialNumber());
 			ps.setInt(2, custDevice.getCustomer().getCustomerId());
 			ps.setInt(3, custDevice.getDevice().getDeviceId());
 			
@@ -30,34 +32,32 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 			int count = ps.executeUpdate();
 			System.out.println(count + " row/s affected");
 		} catch (SQLException e) {
-			System.out.println("Error creating customer device: " + e.getMessage());
+			System.out.println("Error creating customerDevice: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return custDevice;
 	}
 
 	@Override
-	public CustomerDevice getById(int id) {
+	public CustomerDevice getById(int customerDeviceId) {
 		String query = "SELECT * from customer_device where customer_device_id=?"; 
-		
-		ResultSet rs = null;
 		CustomerDevice custDevice = null;
 			try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
-				ps.setInt(1, id);
+				ps.setInt(1, customerDeviceId);
 				// execute the query
 				rs = ps.executeQuery();
 				
-				// create a customer object and populate its data
+				// create a customerDevice object and populate its data
 				if(rs.next()) {
 					custDevice = new CustomerDevice();
 					custDevice.setCustomerDeviceId(rs.getInt("customer_device_id"));
-					custDevice.setSerialNumber(rs.getInt("serial_number"));
+					custDevice.setSerialNumber(rs.getString("serial_number"));
 					custDevice.getCustomer().setCustomerId(rs.getInt("customer_id"));
 					custDevice.getDevice().setDeviceId(rs.getInt("device_id"));
 				}
 			} catch (SQLException e) {
-				System.out.println("Error retrieving customer device: " + e.getMessage());
+				System.out.println("Error retrieving customerDevice: " + e.getMessage());
 				e.printStackTrace();
 			}
 			return custDevice;
@@ -66,28 +66,27 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 	@Override
 	public List<CustomerDevice> getAll() {
 		List<CustomerDevice> custDeviceList = new ArrayList<>();
-		CustomerDevice custDevice = null;
-		CustomerDaoImpl custDaoImpl = null;
-		DeviceDaoImpl deviceDaoImpl = null;
+		CustomerDaoImpl custDaoImpl = new CustomerDaoImpl();
+		DeviceDaoImpl deviceDaoImpl = new DeviceDaoImpl();
 		String query = "SELECT * from customer_device"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
-			ResultSet rs = st.executeQuery();
+			rs = st.executeQuery();
 			while(rs.next())
 			{
 				int customerDeviceId = rs.getInt("customer_device_id");
-	            int serialNumber = rs.getInt("serial_number");
+				String serialNumber = rs.getString("serial_number");
 	            int customerId = rs.getInt("customer_id");
 	            int deviceId = rs.getInt("device_id");
 	          
-	            Customer customer = custDaoImpl.getById(deviceId);
+	            Customer customer = custDaoImpl.getById(customerId);
 	            Device device = deviceDaoImpl.getById(deviceId);
-				custDevice = new CustomerDevice(customerDeviceId, serialNumber, customer, device);
+	            CustomerDevice custDevice = new CustomerDevice(customerDeviceId, serialNumber, customer, device);
 				custDeviceList.add(custDevice);
 			}
 		} catch (SQLException e) {
-			System.out.println("Error retrieving customers: " + e.getMessage());
+			System.out.println("Error retrieving customerDevices: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return custDeviceList;
@@ -95,10 +94,10 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 
 	@Override
 	public CustomerDevice update(CustomerDevice custDevice) {
-		String query = "UPDATE customer_device SET serial_number=?, customer_id=?, device_id=? WHERE id=?"; 
+		String query = "UPDATE customer_device SET serial_number=?, customer_id=?, device_id=? WHERE customer_device_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
-			ps.setInt(1, custDevice.getSerialNumber());
+			ps.setString(1, custDevice.getSerialNumber());
 			ps.setInt(2, custDevice.getCustomer().getCustomerId());
 			ps.setInt(3, custDevice.getDevice().getDeviceId());
 			
@@ -106,25 +105,33 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 			int count = ps.executeUpdate();
 			System.out.println(count + " row/s affected");
 		} catch (SQLException e) {
-			System.out.println("Error updating customer device: " + e.getMessage());
+			System.out.println("Error updating customerDevice: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return custDevice;
 	}
 
 	@Override
-	public int delete(int id) {
-		String query = "DELETE from customer_device WHERE id=?";
+	public int delete(int customerDeviceId) {
+		String query = "DELETE from customer_device WHERE customer_device_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(query)) {
-			 ps.setInt(1, id);
+			 ps.setInt(1, customerDeviceId);
 			 int count = ps.executeUpdate();
 			 System.out.println(count + " row/s affected");
+			 if(count>0) {
+					System.out.println("CustomerDevice with ID: " + customerDeviceId + " deleted successfully");
+				} 
+				else {
+					System.out.println("No CustomerDevice with ID: " + customerDeviceId + " found");
+				}
 		} catch (SQLException e) {
-			System.out.println("Error deleting customer device: " + e.getMessage());
+			System.out.println("Error deleting customerDevice: " + e.getMessage());
 			e.printStackTrace();
 		}
-		return id;
+		return customerDeviceId;
 	}
 
 }
+
+

@@ -1,17 +1,17 @@
 package repairservice.model;
 
-public class CustomerDevice {
+public class DeviceBrandService {
 
 	private int customerDeviceId;
 	private String serialNumber;
 	private Customer customer;	// Foreign key reference
 	private Device device;		// Foreign key reference
 	
-	public CustomerDevice() {
+	public DeviceBrandService() {
 		
 	}
 	
-	public CustomerDevice(int customerDeviceId, String serialNumber, Customer customer, Device device) {
+	public DeviceBrandService(int customerDeviceId, String serialNumber, Customer customer, Device device) {
 		this.customerDeviceId = customerDeviceId;
 		this.serialNumber = serialNumber;
 		this.customer = customer;

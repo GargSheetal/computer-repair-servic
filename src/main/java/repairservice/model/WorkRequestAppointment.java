@@ -2,30 +2,39 @@ package repairservice.model;
 
 import java.util.Date;
 
-public class ServiceRequestAppointment {
+public class WorkRequestAppointment {
 	
-	private ServiceRequest serviceRequest;		// Foreign key reference
+	private int workRequestAppointmentId;
+	private WorkRequest workRequest;		// Foreign key reference
 	private Technician technician;		// Foreign key reference
 	private Date appointmentTimestamp;
 	private String technicianNotes;
 	
-	public ServiceRequestAppointment() {}
-	
-	public ServiceRequestAppointment(ServiceRequest serviceRequest, Technician technician, Date appointmentTimestamp,
-			String technicianNotes) {
-		super();
-		this.serviceRequest = serviceRequest;
+	public WorkRequestAppointment() {}
+
+	public WorkRequestAppointment(int workRequestAppointmentId, WorkRequest workRequest, Technician technician,
+			Date appointmentTimestamp, String technicianNotes) {
+		this.workRequestAppointmentId = workRequestAppointmentId;
+		this.workRequest = workRequest;
 		this.technician = technician;
 		this.appointmentTimestamp = appointmentTimestamp;
 		this.technicianNotes = technicianNotes;
 	}
 
-	public ServiceRequest getServiceRequest() {
-		return serviceRequest;
+	public int getWorkRequestAppointmentId() {
+		return workRequestAppointmentId;
 	}
 
-	public void setServiceRequest(ServiceRequest serviceRequest) {
-		this.serviceRequest = serviceRequest;
+	public void setWorkRequestAppointmentId(int workRequestAppointmentId) {
+		this.workRequestAppointmentId = workRequestAppointmentId;
+	}
+
+	public WorkRequest getWorkRequest() {
+		return workRequest;
+	}
+
+	public void setWorkRequest(WorkRequest workRequest) {
+		this.workRequest = workRequest;
 	}
 
 	public Technician getTechnician() {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<technicians xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="technicians.xsd">
+	<technician technician_id="1">
+		<last_name>Stark</last_name>
+		<rest_of_name>Tony</rest_of_name>
+		<email>ironman@marvel.com</email>
+		<phone>1112223333</phone>
+		<work_request_appointment work_request_appointment_id="1">
+			<appointment_timestamp>2023-01-29T11:00:00</appointment_timestamp>
+			<technician_notes>Need screen replacement</technician_notes>
+		</work_request_appointment>
+	</technician>
+	<technician technician_id="2">
+		<last_name>Rogers</last_name>
+		<rest_of_name>Steve</rest_of_name>
+		<email>captainamerica@marvel.com</email>
+		<phone>2223334444</phone>
+		<work_request_appointment work_request_appointment_id="2">
+			<appointment_timestamp>2023-01-25T14:00:00</appointment_timestamp>
+			<technician_notes>New battery ordered</technician_notes>
+		</work_request_appointment>
+	</technician>
+	<technician technician_id="3">
+		<last_name>Thor</last_name>
+		<rest_of_name></rest_of_name>
+		<email>odinson@marvel.com</email>
+		<phone>3334445555</phone>
+		<work_request_appointment work_request_appointment_id="3">
+			<appointment_timestamp>2023-02-18T15:00:00</appointment_timestamp>
+			<technician_notes></technician_notes>
+		</work_request_appointment>
+	</technician>
+</technicians>

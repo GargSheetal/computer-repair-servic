@@ -2,46 +2,45 @@ package repairservice.model;
 
 import java.util.Date;
 
-public class ServiceRequest {
+public class WorkRequest {
 
-	private int serviceRequestId;
-	private Service service;		// Foreign key reference
+	private int workRequestId;
+	private WorkType workType;		// Foreign key reference
 	private CustomerDevice customerDevice;		// Foreign key reference
 	private Date createdTimestamp;
 	private Date lastUpdatedTimestamp;
 	private Date completedTimestamp;
 	private double amount;
-	private String serviceRequestDescription;
+	private String workRequestDescription;
 	
-	public ServiceRequest() {}
-	
-	public ServiceRequest(int serviceRequestId, Service service, CustomerDevice customerDevice, Date createdTimestamp,
-			Date lastUpdatedTimestamp, Date completedTimestamp, double amount, String serviceRequestDescription) {
-		super();
-		this.serviceRequestId = serviceRequestId;
-		this.service = service;
+	public WorkRequest() {}
+
+	public WorkRequest(int workRequestId, WorkType workType, CustomerDevice customerDevice, Date createdTimestamp,
+			Date lastUpdatedTimestamp, Date completedTimestamp, double amount, String workRequestDescription) {
+		this.workRequestId = workRequestId;
+		this.workType = workType;
 		this.customerDevice = customerDevice;
 		this.createdTimestamp = createdTimestamp;
 		this.lastUpdatedTimestamp = lastUpdatedTimestamp;
 		this.completedTimestamp = completedTimestamp;
 		this.amount = amount;
-		this.serviceRequestDescription = serviceRequestDescription;
+		this.workRequestDescription = workRequestDescription;
 	}
 
-	public int getServiceRequestId() {
-		return serviceRequestId;
+	public int getWorkRequestId() {
+		return workRequestId;
 	}
 
-	public void setServiceRequestId(int serviceRequestId) {
-		this.serviceRequestId = serviceRequestId;
+	public void setWorkRequestId(int workRequestId) {
+		this.workRequestId = workRequestId;
 	}
 
-	public Service getService() {
-		return service;
+	public WorkType getWorkType() {
+		return workType;
 	}
 
-	public void setService(Service service) {
-		this.service = service;
+	public void setWorkType(WorkType workType) {
+		this.workType = workType;
 	}
 
 	public CustomerDevice getCustomerDevice() {
@@ -84,12 +83,13 @@ public class ServiceRequest {
 		this.amount = amount;
 	}
 
-	public String getServiceRequestDescription() {
-		return serviceRequestDescription;
+	public String getWorkRequestDescription() {
+		return workRequestDescription;
 	}
 
-	public void setServiceRequestDescription(String serviceRequestDescription) {
-		this.serviceRequestDescription = serviceRequestDescription;
+	public void setWorkRequestDescription(String workRequestDescription) {
+		this.workRequestDescription = workRequestDescription;
 	}
 	
 }
+

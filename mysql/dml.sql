@@ -1,7 +1,7 @@
 show databases;
 use computer_repair_service;
-select * from customer;
-
+select * from technicians;
+desc work_request_payments;
 -- INSERT into customer(last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
 	('Potter', 'Harry', 'hp@gmail.com', '3456789012'),
@@ -14,7 +14,7 @@ select * from customer;
     ('Microsoft'),
     ('Google');
 
--- INSERT into device_category(device_category_name, device_brand_id)
+-- INSERT into device_type(device_type_name, device_brand_id)
 	values('smartphone', 1),
     ('smartphone', 2),
     ('smartphone', 4),
@@ -25,7 +25,8 @@ select * from customer;
     ('laptop', 3),
     ('laptop', 4);
     
--- INSERT into device(device_name, device_category_id)
+-- ALTER TABLE device RENAME COLUMN device_category_id TO device_type_id;
+-- INSERT into device(device_name, device_type_id)
 	values('iPhone 14', 1),
     ('iPhone 13', 1),
     ('Galaxy S20', 2),
@@ -60,42 +61,43 @@ select * from customer;
     ('Rogers', 'Steve', 'captainamerica@marvel.com', '2223334444'),
     ('Thor', null, 'odinson@marvel.com', '3334445555');
        
--- INSERT into service(device_id, service_description, price)
+-- INSERT into work_type(device_id, work_description, price)
 	values(1, 'Screen Replacement', 200.00),
     (1, 'Battery Replacement', 70.00),
     (2, 'Malware Removal', 400.00);
     
--- INSERT into service(device_id, service_description, price)
+-- INSERT into work_type(device_id, work_description, price)
     values(3, 'Screen Replacement', 100.00);
     
--- INSERT into service_technician(service_id, technician_id, skill_level)
+-- INSERT into work_type_technician(work_type_id, technician_id, skill_level)
 	values(1, 2, 1),
     (2, 3, 3),
     (3, 1, 2);
     
--- INSERT into service_technician(service_id, technician_id, skill_level)
+-- INSERT into work_type_technician(work_type_id, technician_id, skill_level)
 	values(4, 2, 2);
     
 -- ALTER table service_request drop column status; -- dropped column
 -- ALTER table service_request modify amount decimal(10,2); -- made field nullable
--- INSERT into service_request(customer_device_id, service_id, created_timestamp, service_request_description)
+-- INSERT into work_request(customer_device_id, work_type_id, created_timestamp, work_request_description)
 	values(1, 1, '2023-01-23 12:45:56', 'please do screen replacement for my iPhone14. Thanks Mark Shelton'),
     (2, 3, '2023-01-27 12:45:56', 'please do malware removal from my Macbook Pro. Thanks Mark Shelton'),
     (3, 4, '2023-02-15 12:45:56', 'please do screen replacement for my Galaxy S20. Thanks Mark Shelton');
     
--- UPDATE service_request 
-	SET service_request_description = 'please do screen replacement for my Galaxy S20. Thanks Harry Potter' 
-    WHERE service_request_id = 3;
+-- UPDATE work_request 
+	SET work_request_description = 'please do screen replacement for my Galaxy S20. Thanks Harry Potter' 
+    WHERE work_request_id = 3;
     
 -- ALTER table service_request_appointment add service_request_appointment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY; -- added a new column as primary key (not likely to be done in a real app)
 -- ALTER table service_request_appointment modify technician_notes varchar(400) -- made field nullable
--- INSERT into service_request_appointment(service_request_id, technician_id, appointment_timestamp)
+-- INSERT into work_request_appointment(work_request_id, technician_id, appointment_timestamp)
 	values(1, 2, '2023-01-25 11:00:00'),
     (1, 2, '2023-01-27 12:00:00'),
     (2, 1, '2023-01-29 11:00:00'),
 	(3, 2, '2023-02-18 11:00:00');
-
--- INSERT into service_request_payment(service_request_id, amount, payment_timestamp, payment_confirmation_number)
+    
+-- ALTER TABLE work_request_payment RENAME COLUMN work_request_paymentId TO work_request_payment_id;
+-- INSERT into work_request_payment(work_request_id, amount, payment_timestamp, payment_confirmation_number)
 	values(1, 200.00, '2023-01-27 12:00:00', 'abc123xyz')
     
 -- UPDATE service_request 
@@ -278,4 +280,35 @@ AND sr.customer_device_id = cd.customer_device_id
 AND sra.service_request_id = sr.service_request_id
 AND srp.service_request_id = sr.service_request_id
 AND s.service_id = st.service_id
-AND st.technician_id = t.technician_id
+AND st.technician_id = t.technician_id;
+
+
+-- ALTER TABLE customer
+RENAME TO customers;
+desc customers;
+
+-- ALTER TABLE customer_device
+RENAME TO customer_devices;
+-- ALTER TABLE device
+RENAME TO devices;
+-- ALTER TABLE device_brand
+RENAME TO device_brands;
+-- ALTER TABLE device_type
+RENAME TO device_types;
+-- ALTER TABLE technician
+RENAME TO technicians;
+-- ALTER TABLE work_request
+RENAME TO work_requests;
+-- ALTER TABLE work_request_appointment
+RENAME TO work_request_appointments;
+-- ALTER TABLE work_request_payment
+RENAME TO work_request_payments;
+-- ALTER TABLE work_type
+RENAME TO work_types;
+-- ALTER TABLE work_type_technician
+RENAME TO work_type_technicians;
+
+
+
+
+

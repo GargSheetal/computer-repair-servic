@@ -4,16 +4,16 @@ public class Device {
 
 	private int deviceId;
 	private String deviceName;
-	private DeviceCategory deviceCategory;	// Foreign key reference
+	private DeviceType deviceType = new DeviceType();	// Foreign key reference
 	
 	public Device() {
 		
 	}
 	
-	public Device(int deviceId, String deviceName, DeviceCategory deviceCategory) {
+	public Device(int deviceId, String deviceName, DeviceType deviceType) {
 		this.deviceId = deviceId;
 		this.deviceName = deviceName;
-		this.deviceCategory = deviceCategory;
+		this.deviceType = deviceType;
 	}
 
 	public int getDeviceId() {
@@ -32,12 +32,12 @@ public class Device {
 		this.deviceName = deviceName;
 	}
 
-	public DeviceCategory getDeviceCategory() {
-		return deviceCategory;
+	public DeviceType getDeviceType() {
+		return deviceType;
 	}
 
-	public void setDeviceCategory(DeviceCategory deviceCategory) {
-		this.deviceCategory = deviceCategory;
+	public void setDeviceType(DeviceType deviceType) {
+		this.deviceType = deviceType;
 	}
 
 }

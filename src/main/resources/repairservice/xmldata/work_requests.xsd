@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="work_requests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="work_request" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="created_timestamp" type="xs:dateTime"/>
+							<xs:element name="last_updated_timestamp" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="completed_timestamp" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="amount" type="xs:double" minOccurs="0"/>
+							<xs:element name="work_request_description" type="xs:string" minOccurs="0"/>
+							<xs:element name="work_request_appointment" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="appointment_timestamp" type="xs:dateTime"/>
+									</xs:sequence>
+									<xs:attribute name="work_request_appointment_id" type="xs:int" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="work_request_payment" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="payment_confirmation_number" type="xs:string"/>
+										<xs:element name="payement_timestamp" type="xs:dateTime"/>
+										<xs:element name="amount" type="xs:double"/>
+									</xs:sequence>
+									<xs:attribute name="work_request_payment_id" type="xs:int" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="work_request_id" type="xs:int" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

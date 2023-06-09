@@ -9,7 +9,6 @@ public interface IDeviceDao extends IDAO<Device> {
 	@Override
 	Device create(Device device);
 
-	@Override
 	Device getById(int id);
 
 	@Override
