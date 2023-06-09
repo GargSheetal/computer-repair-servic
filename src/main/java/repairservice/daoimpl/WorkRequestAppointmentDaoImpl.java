@@ -24,7 +24,7 @@ public class WorkRequestAppointmentDaoImpl implements IWorkRequestAppointmentDao
 	
 	@Override
 	public WorkRequestAppointment create(WorkRequestAppointment appointment) {
-		String query = "INSERT into work_request_appointment(work_request_id, technician_id, appointment_timestamp, technician_notes) values(?,?,?,?)";
+		String query = "INSERT into work_request_appointments(work_request_id, technician_id, appointment_timestamp, technician_notes) values(?,?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -47,7 +47,7 @@ public class WorkRequestAppointmentDaoImpl implements IWorkRequestAppointmentDao
 
 	@Override
 	public WorkRequestAppointment getById(int workReqApptId) {
-		String query = "SELECT * from work_request_appointment where work_request_appointment_id=?"; 
+		String query = "SELECT * from work_request_appointments where work_request_appointment_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workReqApptId);
@@ -74,7 +74,7 @@ public class WorkRequestAppointmentDaoImpl implements IWorkRequestAppointmentDao
 		List<WorkRequestAppointment> appointmentList = new ArrayList<>();
 		WorkRequestDaoImpl workRequestDaoImpl = new WorkRequestDaoImpl();
 		TechnicianDaoImpl technicianDaoImpl = new TechnicianDaoImpl();
-		String query = "SELECT * from work_request_appointment"; 
+		String query = "SELECT * from work_request_appointments"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -101,7 +101,7 @@ public class WorkRequestAppointmentDaoImpl implements IWorkRequestAppointmentDao
 
 	@Override
 	public WorkRequestAppointment update(WorkRequestAppointment appointment) {
-		String query = "UPDATE work_request_appointment SET work_request_id=?, technician_id=?, appointment_timestamp=?, technician_notes=? WHERE work_request_appointment_id=?"; 
+		String query = "UPDATE work_request_appointments SET work_request_id=?, technician_id=?, appointment_timestamp=?, technician_notes=? WHERE work_request_appointment_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setInt(1, appointment.getWorkRequest().getWorkRequestId());
@@ -121,7 +121,7 @@ public class WorkRequestAppointmentDaoImpl implements IWorkRequestAppointmentDao
 
 	@Override
 	public int delete(int workReqApptId) {
-		String query = "DELETE from work_request_appointment WHERE work_request_appointment_id=?";
+		String query = "DELETE from work_request_appointments WHERE work_request_appointment_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workReqApptId);

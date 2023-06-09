@@ -21,7 +21,7 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
 	Date paymentTimestamp = new Date(payment.getPaymentTimestamp().getTime());
 	@Override
 	public WorkRequestPayment create(WorkRequestPayment payment) {
-		String query = "INSERT into work_request_payment(work_request_id, payment_confirmation_number, payment_timestamp, amount) values(?,?,?,?)";
+		String query = "INSERT into work_request_payments(work_request_id, payment_confirmation_number, payment_timestamp, amount) values(?,?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -44,7 +44,7 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
 
 	@Override
 	public WorkRequestPayment getById(int workReqPymtId) {
-		String query = "SELECT * from work_request_payment where work_request_payment_id=?"; 
+		String query = "SELECT * from work_request_payments where work_request_payment_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workReqPymtId);
@@ -70,7 +70,7 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
 	public List<WorkRequestPayment> getAll() {
 		List<WorkRequestPayment> paymentList = new ArrayList<>();
 		WorkRequestDaoImpl workRequestDaoImpl = new WorkRequestDaoImpl();
-		String query = "SELECT * from work_request_payment"; 
+		String query = "SELECT * from work_request_payments"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -96,7 +96,7 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
 
 	@Override
 	public WorkRequestPayment update(WorkRequestPayment payment) {
-		String query = "UPDATE work_request_payment SET work_request_id=?, payment_confirmation_number=?, payment_timestamp=?, amount=? WHERE work_request_payment_id=?"; 
+		String query = "UPDATE work_request_payments SET work_request_id=?, payment_confirmation_number=?, payment_timestamp=?, amount=? WHERE work_request_payment_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setInt(1, payment.getWorkRequest().getWorkRequestId());
@@ -116,7 +116,7 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
 
 	@Override
 	public int delete(int workReqPymtId) {
-		String query = "DELETE from work_request_payment WHERE work_request_payment_id=?";
+		String query = "DELETE from work_request_payments WHERE work_request_payment_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workReqPymtId);

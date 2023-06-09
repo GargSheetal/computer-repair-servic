@@ -4,7 +4,7 @@ public class DeviceType {
 	
 	private int deviceTypeId;
 	private String deviceTypeName;
-	private DeviceBrand deviceBrand;	// Foreign key reference
+	private DeviceBrand deviceBrand = new DeviceBrand();;	// Foreign key reference
 	
 	public DeviceType() {
 	}

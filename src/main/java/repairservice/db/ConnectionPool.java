@@ -1,7 +1,11 @@
 package repairservice.db;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -9,20 +13,31 @@ public class ConnectionPool {
 	
 	private static BasicDataSource dataSource;
 	
-	static {
-        // Configure the data source
-        dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/computer_repair_service");
-        dataSource.setUsername("root");
-        dataSource.setPassword("Q!W@E#r4t5y6");
-        dataSource.setMinIdle(20);
-        dataSource.setMaxIdle(50);
-        dataSource.setMaxOpenPreparedStatements(100);
-        dataSource.setMaxWaitMillis(20000); 
-    }
-	
 	public static Connection getConnection() throws SQLException {
+		Properties props = new Properties();
+		FileInputStream input;
+		try {
+			input = new FileInputStream("./src/main/resources/repairservice/db.properties");
+			try {
+				props.load(input);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		dataSource = new BasicDataSource();
+		dataSource.setUrl(props.getProperty("url"));
+		dataSource.setUsername(props.getProperty("username"));
+		dataSource.setPassword(props.getProperty("password"));
+		dataSource.setMinIdle(20);
+		dataSource.setMaxIdle(50);
+		dataSource.setMaxOpenPreparedStatements(100);
+		dataSource.setMaxWaitMillis(20000); 
+
 		return dataSource.getConnection();
+
 	}
 	
 	public static void releaseConnection(Connection connection) throws SQLException {

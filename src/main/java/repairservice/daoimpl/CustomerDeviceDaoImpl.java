@@ -19,7 +19,7 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 	
 	@Override
 	public CustomerDevice create(CustomerDevice custDevice) {
-		String query = "INSERT into customer_device('serial_number', 'customer_id', 'device_id') values(?,?,?)";
+		String query = "INSERT into customer_devices('serial_number', 'customer_id', 'device_id') values(?,?,?)";
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query)) {
@@ -40,7 +40,7 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 
 	@Override
 	public CustomerDevice getById(int customerDeviceId) {
-		String query = "SELECT * from customer_device where customer_device_id=?"; 
+		String query = "SELECT * from customer_devices where customer_device_id=?"; 
 		CustomerDevice custDevice = null;
 			try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
@@ -68,7 +68,8 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 		List<CustomerDevice> custDeviceList = new ArrayList<>();
 		CustomerDaoImpl custDaoImpl = new CustomerDaoImpl();
 		DeviceDaoImpl deviceDaoImpl = new DeviceDaoImpl();
-		String query = "SELECT * from customer_device"; 
+		
+		String query = "SELECT * from customer_devices"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -94,7 +95,7 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 
 	@Override
 	public CustomerDevice update(CustomerDevice custDevice) {
-		String query = "UPDATE customer_device SET serial_number=?, customer_id=?, device_id=? WHERE customer_device_id=?"; 
+		String query = "UPDATE customer_devices SET serial_number=?, customer_id=?, device_id=? WHERE customer_device_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, custDevice.getSerialNumber());
@@ -113,7 +114,7 @@ public class CustomerDeviceDaoImpl implements ICustomerDeviceDao {
 
 	@Override
 	public int delete(int customerDeviceId) {
-		String query = "DELETE from customer_device WHERE customer_device_id=?";
+		String query = "DELETE from customer_devices WHERE customer_device_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(query)) {
 			 ps.setInt(1, customerDeviceId);

@@ -25,7 +25,7 @@ public class WorkTypeDaoImpl implements IWorkTypeDao {
 	@Override
 	public WorkType create(WorkType workType) {
 		
-		String query = "INSERT into work_type(work_description, price, device_id) values(?,?,?)";
+		String query = "INSERT into work_types(work_description, price, device_id) values(?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -47,7 +47,7 @@ public class WorkTypeDaoImpl implements IWorkTypeDao {
 
 	@Override
 	public WorkType getById(int workTypeId) {
-		String query = "SELECT * from work_type where work_type_id=?"; 
+		String query = "SELECT * from work_types where work_type_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workTypeId);
@@ -72,7 +72,7 @@ public class WorkTypeDaoImpl implements IWorkTypeDao {
 	public List<WorkType> getAll() {
 		List<WorkType> workTypeList = new ArrayList<>();
 		DeviceDaoImpl deviceDaoImpl = new DeviceDaoImpl();
-		String query = "SELECT * from work_type"; 
+		String query = "SELECT * from work_types"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -97,7 +97,7 @@ public class WorkTypeDaoImpl implements IWorkTypeDao {
 
 	@Override
 	public WorkType update(WorkType workType) {
-		String query = "UPDATE work_type SET work_description=?, price=?, device_id=?, WHERE work_type_id=?"; 
+		String query = "UPDATE work_types SET work_description=?, price=?, device_id=?, WHERE work_type_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {
 			
@@ -117,7 +117,7 @@ public class WorkTypeDaoImpl implements IWorkTypeDao {
 
 	@Override
 	public int delete(int workTypeId) {
-		String query = "DELETE from work_type WHERE work_type_id=?";
+		String query = "DELETE from work_types WHERE work_type_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workTypeId);

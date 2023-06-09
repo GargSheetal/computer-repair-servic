@@ -18,7 +18,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	
 	public Customer create(Customer customer) {
 
-		String query = "INSERT into customer(last_name, rest_of_name, email, phone) values(?,?,?,?)";
+		String query = "INSERT into customers(last_name, rest_of_name, email, phone) values(?,?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -40,7 +40,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 	public Customer getById(int customerId) {
-		String query = "SELECT * from customer where customer_id=?"; 
+		String query = "SELECT * from customers where customer_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, customerId);
@@ -65,7 +65,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 
 	public List<Customer> getAll() {
 		List<Customer> custList = new ArrayList<>();
-		String query = "SELECT * from customer"; 
+		String query = "SELECT * from customers"; 
 
 		try(Connection conn = ConnectionPool.getConnection();
 			   PreparedStatement st = conn.prepareStatement(query)) {
@@ -83,7 +83,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 	public Customer update(Customer customer) {
-		String query = "UPDATE customer SET last_name=?, rest_of_name=?, email=?, phone=? WHERE customer_id=?"; 
+		String query = "UPDATE customers SET last_name=?, rest_of_name=?, email=?, phone=? WHERE customer_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, customer.getLastName());
@@ -102,7 +102,7 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 	public int delete(int customerId) {
-		String query = "DELETE from customer WHERE customer_id = ?";
+		String query = "DELETE from customers WHERE customer_id = ?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			// Set the value for the prepared statement
@@ -123,5 +123,8 @@ public class CustomerDaoImpl implements ICustomerDao {
 	}
 
 }
+
+
+
 
 

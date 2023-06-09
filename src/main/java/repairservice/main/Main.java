@@ -1,14 +1,24 @@
 package repairservice.main;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import repairservice.daoimpl.CustomerDaoImpl;
 import repairservice.daoimpl.CustomerDeviceDaoImpl;
+import repairservice.daoimpl.DeviceTypeDaoImpl;
 import repairservice.db.ConnectionPool;
 import repairservice.model.Customer;
 import repairservice.model.CustomerDevice;
+import repairservice.model.DeviceType;
 import repairservice.service.CustomerDeviceService;
 import repairservice.service.CustomerService;
+import repairservice.service.DeviceTypeService;
+import repairservice.xml.XMLDOMParser;
+import repairservice.xml.XMLValidationDriver;
 
 public class Main {
 
@@ -19,6 +29,9 @@ public class Main {
 		CustomerDeviceDaoImpl customerDeviceDaoImpl = new CustomerDeviceDaoImpl();
 		CustomerDeviceService customerDeviceService = new CustomerDeviceService(customerDeviceDaoImpl);
 		
+		DeviceTypeDaoImpl deviceTypeDaoImpl = new DeviceTypeDaoImpl();
+		DeviceTypeService deviceTypeService = new DeviceTypeService(deviceTypeDaoImpl);
+		
 		// Retrieve all customers
 		List<Customer> custList = customerService.getAll();
 		System.out.println("All Customers:");
@@ -27,17 +40,17 @@ public class Main {
 								customer.getRestOfName() + " : " + customer.getEmail() + " : " + customer.getEmail());
 		}
 		
-//		// Get a specific customer by ID
-//		int customerId = 2;
-//		Customer customer = customerService.getById(customerId);
-//		if (customer != null) {
-//            System.out.println("\nCustomer with ID " + customerId + ":");
-//            System.out.println(customer.getCustomerId() + " : " + customer.getLastName() + " : " + 
-//					customer.getRestOfName() + " : " + customer.getEmail() + " : " + customer.getEmail());
-//        } else {
-//            System.out.println("\nCustomer with ID " + customerId + " not found.");
-//        }
-//		
+		// Get a specific customer by ID
+		int customerId = 2;
+		Customer customer = customerService.getById(customerId);
+		if (customer != null) {
+            System.out.println("\nCustomer with ID " + customerId + ":");
+            System.out.println(customer.getCustomerId() + " : " + customer.getLastName() + " : " + 
+					customer.getRestOfName() + " : " + customer.getEmail() + " : " + customer.getEmail());
+        } else {
+            System.out.println("\nCustomer with ID " + customerId + " not found.");
+        }
+		
 //		// Add a new customer
 //        Customer newCustomer = new Customer("Jackson", "Michael", "jm234@gmail.com", "2222333344");
 //        customerService.create(newCustomer);
@@ -45,7 +58,7 @@ public class Main {
 //        		newCustomer.getRestOfName() + " : " + newCustomer.getEmail() + " : " + newCustomer.getEmail());
 //        
 //        // Delete a customer
-//		int customerId2 = 12;
+//		  int customerId2 = 12;
 //        customerService.delete(customerId2);
 		
 		// Retrieve all customer devices
@@ -57,8 +70,34 @@ public class Main {
 					customerDevice.getCustomer().getCustomerId() + " : " + customerDevice.getDevice().getDeviceId());
 		}
 		
-     // Shutdown the connection pool
+		// Retrieve deviceType by id
+		DeviceType deviceType = deviceTypeService.getById(3);
+		System.out.println("\nDeviceTypeId : DeviceTypeName : DeviceBrandId");
+		System.out.println(deviceType.getDeviceTypeId() + " : " + deviceType.getDeviceTypeName() + " : " + deviceType.getDeviceBrand().getDeviceBrandId());
+		
+		
+		// Shutdown the connection pool
         ConnectionPool.shutdown();
+        
+        
+        // Validating xml file with xml schema
+        boolean flag = true;
+		try {
+			XMLValidationDriver.validate("./src/main/resources/repairservice/xmldata/technicians.xml", "./src/main/resources/repairservice/xmldata/technicians.xsd");
+		} catch (SAXException e) {
+			flag = false;
+		} catch (IOException e) {
+			flag = false;
+		}
+		System.out.println("\nxml file is valid : " + flag);
+		System.out.println("-------------------------");
+		
+		// parsing xml file with DOM parser
+		try {
+			XMLDOMParser.parse();
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

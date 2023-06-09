@@ -19,7 +19,7 @@ public class DeviceDaoImpl implements IDeviceDao{
 	
 	@Override
 	public Device create(Device device) {
-		String query = "INSERT into device(device_id, device_name, device_type_id) values(?,?,?)";
+		String query = "INSERT into devices(device_id, device_name, device_type_id) values(?,?,?)";
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query)) {
@@ -40,7 +40,7 @@ public class DeviceDaoImpl implements IDeviceDao{
 
 	@Override
 	public Device getById(int deviceId) {
-		String query = "SELECT * from device WHERE device_id = ?";
+		String query = "SELECT * from devices WHERE device_id = ?";
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query)) {
 			
@@ -65,7 +65,8 @@ public class DeviceDaoImpl implements IDeviceDao{
 	public List<Device> getAll() {
 		List<Device> deviceList = new ArrayList<>();
 		DeviceTypeDaoImpl deviceCategoryDaoImpl = new DeviceTypeDaoImpl();
-		String query = "SELECT * from device";
+		
+		String query = "SELECT * from devices";
 		try(Connection conn = ConnectionPool.getConnection();
 			   PreparedStatement st = conn.prepareStatement(query)) {
 			rs = st.executeQuery();
@@ -87,7 +88,7 @@ public class DeviceDaoImpl implements IDeviceDao{
 
 	@Override
 	public Device update(Device device) {
-		String query = "UPDATE device SET device_name=?, device_type_id=? WHERE device_id=?"; 
+		String query = "UPDATE devices SET device_name=?, device_type_id=? WHERE device_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, device.getDeviceName());
@@ -105,7 +106,7 @@ public class DeviceDaoImpl implements IDeviceDao{
 
 	@Override
 	public int delete(int deviceId) {
-		String query = "DELETE from device WHERE device_id=?";
+		String query = "DELETE from devices WHERE device_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(query)) {
 			 ps.setInt(1, deviceId);
@@ -124,6 +125,4 @@ public class DeviceDaoImpl implements IDeviceDao{
 		return deviceId;
 	}
 	
-	
-
 }

@@ -20,16 +20,7 @@ import org.xml.sax.SAXException;
  * Get all the elements by tag name
  */
 
-
 public class XMLDOMParser {
-
-	public static void main(String[] args) {
-		try {
-			parse();
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	// Helper method to get the text value of an element
     private static String getTextValue(Element element, String tagName) {

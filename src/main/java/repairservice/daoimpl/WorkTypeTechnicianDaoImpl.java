@@ -20,7 +20,7 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 	
 	@Override
 	public WorkTypeTechnician create(WorkTypeTechnician workTypeTechnician) {
-		String query = "INSERT into work_type_technician(skill_level, work_type_id, technician_id) values(?,?,?)";
+		String query = "INSERT into work_type_technicians(skill_level, work_type_id, technician_id) values(?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -42,7 +42,7 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 
 	@Override
 	public WorkTypeTechnician getByWorkType(int workTypeId) {
-		String query = "SELECT * from work_type_technician where work_type_id=?"; 
+		String query = "SELECT * from work_type_technicians where work_type_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workTypeId);
@@ -68,7 +68,7 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 		List<WorkTypeTechnician> appointmentList = new ArrayList<>();
 		WorkTypeDaoImpl workTypeDaoImpl = new WorkTypeDaoImpl();
 		TechnicianDaoImpl technicianDaoImpl = new TechnicianDaoImpl();
-		String query = "SELECT * from work_type_technician"; 
+		String query = "SELECT * from work_type_technicians"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -93,7 +93,7 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 
 	@Override
 	public WorkTypeTechnician update(WorkTypeTechnician workTypeTechnician) {
-		String query = "UPDATE work_type_technician SET skill_level=? WHERE work_type_id=? and technician_id=?"; 
+		String query = "UPDATE work_type_technicians SET skill_level=? WHERE work_type_id=? and technician_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setInt(1, workTypeTechnician.getSkillLevel());
@@ -110,7 +110,7 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 
 	@Override
 	public WorkTypeTechnician delete(WorkTypeTechnician workTypeTechnician) {
-		String query = "DELETE from work_type_technician WHERE WHERE work_type_id=? and technician_id=?";
+		String query = "DELETE from work_type_technicians WHERE WHERE work_type_id=? and technician_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			// Set the value for the prepared statement
@@ -133,3 +133,4 @@ public class WorkTypeTechnicianDaoImpl implements IWorkTypeTechnicianDao {
 	}
 
 }
+

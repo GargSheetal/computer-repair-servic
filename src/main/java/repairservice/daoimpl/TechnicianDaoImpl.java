@@ -17,7 +17,7 @@ public class TechnicianDaoImpl implements ITechnicianDao {
 	Technician technician = null;
 	@Override
 	public Technician create(Technician technician) {
-		String query = "INSERT into technician(last_name, rest_of_name, email, phone) values(?,?,?,?)";
+		String query = "INSERT into technicians(last_name, rest_of_name, email, phone) values(?,?,?,?)";
 
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
@@ -40,7 +40,7 @@ public class TechnicianDaoImpl implements ITechnicianDao {
 
 	@Override
 	public Technician getById(int technicianId) {
-		String query = "SELECT * from technician where technician_id=?"; 
+		String query = "SELECT * from technicians where technician_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, technicianId);
@@ -66,7 +66,7 @@ public class TechnicianDaoImpl implements ITechnicianDao {
 	@Override
 	public List<Technician> getAll() {
 		List<Technician> techList = new ArrayList<>();
-		String query = "SELECT * from technician"; 
+		String query = "SELECT * from technicians"; 
 
 		try(Connection conn = ConnectionPool.getConnection();
 			   PreparedStatement st = conn.prepareStatement(query)) {
@@ -85,7 +85,7 @@ public class TechnicianDaoImpl implements ITechnicianDao {
 
 	@Override
 	public Technician update(Technician technician) {
-		String query = "UPDATE technician SET last_name=?, rest_of_name=?, email=?, phone=? WHERE technician_id=?"; 
+		String query = "UPDATE technicians SET last_name=?, rest_of_name=?, email=?, phone=? WHERE technician_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, technician.getLastName());
@@ -105,7 +105,7 @@ public class TechnicianDaoImpl implements ITechnicianDao {
 
 	@Override
 	public int delete(int technicianId) {
-		String query = "DELETE from technician WHERE technician_id = ?";
+		String query = "DELETE from technicians WHERE technician_id = ?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			// Set the value for the prepared statement

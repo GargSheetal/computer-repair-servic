@@ -22,7 +22,7 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
 	
 	@Override
 	public WorkRequest create(WorkRequest request) {
-		String query = "INSERT into work_request(work_type_id, customer_device_id, created_timestamp, last_updated_timestamp, "
+		String query = "INSERT into work_requests(work_type_id, customer_device_id, created_timestamp, last_updated_timestamp, "
 				+ "completed_timestamp, amount, work_request_description) values(?,?,?,?,?,?,?)";
 
 		// get connection
@@ -56,7 +56,7 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
 
 	@Override
 	public WorkRequest getById(int id) {
-		String query = "SELECT * from work_request where work_request_id=?"; 
+		String query = "SELECT * from work_requests where work_request_id=?"; 
 		try(Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, id);
@@ -86,7 +86,7 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
 		List<WorkRequest> requestList = new ArrayList<>();
 		WorkTypeDaoImpl workTypeDaoImpl = new WorkTypeDaoImpl();
 		CustomerDeviceDaoImpl customerDeviceDaoImpl = new CustomerDeviceDaoImpl();
-		String query = "SELECT * from work_request"; 
+		String query = "SELECT * from work_requests"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -116,7 +116,7 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
 
 	@Override
 	public WorkRequest update(WorkRequest request) {
-		String query = "UPDATE work_request SET work_type_id=?, customer_device_id=?, created_timestamp=?, last_updated_timestamp=?, completed_timestamp=?, amount=?, work_request_description=? WHERE work_request_id=?"; 
+		String query = "UPDATE work_requests SET work_type_id=?, customer_device_id=?, created_timestamp=?, last_updated_timestamp=?, completed_timestamp=?, amount=?, work_request_description=? WHERE work_request_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setInt(1, request.getWorkType().getWorkTypeId());
@@ -147,7 +147,7 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
 
 	@Override
 	public int delete(int workRequestId) {
-		String query = "DELETE from work_request WHERE work_request_id=?";
+		String query = "DELETE from work_requests WHERE work_request_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 				PreparedStatement ps = conn.prepareStatement(query)) {
 			ps.setInt(1, workRequestId);

@@ -15,7 +15,7 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 
 	@Override
 	public DeviceBrand create(DeviceBrand brand) {
-		String query = "INSERT into device_brand('brand_name') values(?)";
+		String query = "INSERT into device_brands('brand_name') values(?)";
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query)) {
@@ -34,7 +34,7 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 
 	@Override
 	public DeviceBrand getById(int deviceBrandId) {
-		String query = "SELECT * from device_brand where device_brand_id=?"; 
+		String query = "SELECT * from device_brands where device_brand_id=?"; 
 		
 		ResultSet rs = null;
 		DeviceBrand brand = null;
@@ -61,7 +61,7 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 	public List<DeviceBrand> getAll() {
 		List<DeviceBrand> devBrandList = new ArrayList<>();
 		DeviceBrand brand = null;
-		String query = "SELECT * from device_brand"; 
+		String query = "SELECT * from device_brands"; 
 		
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement st = conn.prepareStatement(query)) {
@@ -80,7 +80,7 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 
 	@Override
 	public DeviceBrand update(DeviceBrand brand) {
-		String query = "UPDATE device_brand SET brand_name=? WHERE device_brand_id=?"; 
+		String query = "UPDATE device_brands SET brand_name=? WHERE device_brand_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, brand.getBrandName());
@@ -97,7 +97,7 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 
 	@Override
 	public int delete(int deviceBrandId) {
-		String query = "DELETE from device_brand WHERE device_brand_id=?";
+		String query = "DELETE from device_brands WHERE device_brand_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(query)) {
 			 ps.setInt(1, deviceBrandId);
@@ -117,3 +117,4 @@ public class DeviceBrandDaoImpl implements IDeviceBrandDao {
 	}
 
 }
+

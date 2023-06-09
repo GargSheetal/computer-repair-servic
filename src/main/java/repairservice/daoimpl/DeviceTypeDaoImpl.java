@@ -19,7 +19,7 @@ public class DeviceTypeDaoImpl implements IDeviceTypeDao{
 	
 	@Override
 	public DeviceType create(DeviceType deviceType) {
-		String query = "INSERT into device_type(device_type_id, device_type_name, device_brand_id) values(?,?,?)";
+		String query = "INSERT into device_types(device_type_id, device_type_name, device_brand_id) values(?,?,?)";
 		// get connection
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query)) {
@@ -40,7 +40,7 @@ public class DeviceTypeDaoImpl implements IDeviceTypeDao{
 
 	@Override
 	public DeviceType getById(int id) {
-		String query = "SELECT * from device_type WHERE device_type_id = ?";
+		String query = "SELECT * from device_types WHERE device_type_id = ?";
 		try(Connection conn = ConnectionPool.getConnection();
 			PreparedStatement statement = conn.prepareStatement(query)) {
 			
@@ -65,7 +65,7 @@ public class DeviceTypeDaoImpl implements IDeviceTypeDao{
 	public List<DeviceType> getAll() {
 		List<DeviceType> devTypeList = new ArrayList<>();
 		DeviceBrandDaoImpl deviceBrandDaoImpl = new DeviceBrandDaoImpl();
-		String query = "SELECT * from device_type";
+		String query = "SELECT * from device_types";
 		try(Connection conn = ConnectionPool.getConnection();
 			   PreparedStatement st = conn.prepareStatement(query)) {
 			rs = st.executeQuery();
@@ -87,7 +87,7 @@ public class DeviceTypeDaoImpl implements IDeviceTypeDao{
 
 	@Override
 	public DeviceType update(DeviceType deviceType) {
-		String query = "UPDATE device_type SET device_type_name=?, device_brand_id=? WHERE device_type_id=?"; 
+		String query = "UPDATE device_types SET device_type_name=?, device_brand_id=? WHERE device_type_id=?"; 
 		try (Connection conn = ConnectionPool.getConnection();
 		     PreparedStatement ps = conn.prepareStatement(query)) {		
 			ps.setString(1, deviceType.getDeviceTypeName());
@@ -105,7 +105,7 @@ public class DeviceTypeDaoImpl implements IDeviceTypeDao{
 
 	@Override
 	public int delete(int deviceTypeId) {
-		String query = "DELETE from device_type WHERE device_type_id=?";
+		String query = "DELETE from device_types WHERE device_type_id=?";
 		try (Connection conn = ConnectionPool.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(query)) {
 			 ps.setInt(1, deviceTypeId);
