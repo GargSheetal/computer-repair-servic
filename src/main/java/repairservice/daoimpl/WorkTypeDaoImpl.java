@@ -1,7 +1,6 @@
 package repairservice.daoimpl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,11 +9,7 @@ import java.util.List;
 
 import repairservice.db.ConnectionPool;
 import repairservice.idao.IWorkTypeDao;
-import repairservice.model.DeviceBrandService;
 import repairservice.model.Device;
-import repairservice.model.Technician;
-import repairservice.model.WorkRequest;
-import repairservice.model.WorkRequestAppointment;
 import repairservice.model.WorkType;
 
 public class WorkTypeDaoImpl implements IWorkTypeDao {

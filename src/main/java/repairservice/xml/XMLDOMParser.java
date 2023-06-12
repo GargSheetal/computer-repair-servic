@@ -62,16 +62,16 @@ public class XMLDOMParser {
             String email = getTextValue(customerElement, "email");
             String phone = getTextValue(customerElement, "phone");
             
-            // Get customer device details
-            Element deviceElement = (Element) customerElement.getElementsByTagName("customer_device").item(0);
-            
-            // Skip if deviceElement is null
-            if(deviceElement == null) {
-            	continue;
-            }
-            
-            String deviceID = deviceElement.getAttribute("customer_device_id");
-            String serialNumber = getTextValue(deviceElement, "serial_number");
+//            // Get customer device details
+//            Element deviceElement = (Element) customerElement.getElementsByTagName("customer_device").item(0);
+//            
+//            // Skip if deviceElement is null
+//            if(deviceElement == null) {
+//            	continue;
+//            }
+//            
+//            String deviceID = deviceElement.getAttribute("customer_device_id");
+//            String serialNumber = getTextValue(deviceElement, "serial_number");
             
             // Printing with the extracted data
             System.out.println("Customer ID: " + custId);
@@ -79,9 +79,10 @@ public class XMLDOMParser {
             System.out.println("Rest of Name: " + restOfName);
             System.out.println("Email: " + email);
             System.out.println("Phone: " + phone);
-            System.out.println("CustomerDevice ID: " + deviceID);
-            System.out.println("    Serial Number: " + serialNumber);
+//            System.out.println("CustomerDevice ID: " + deviceID);
+//            System.out.println("    Serial Number: " + serialNumber);
             System.out.println("--------------------");
 		}
 	}
 }
+

@@ -10,7 +10,6 @@ import java.util.List;
 
 import repairservice.db.ConnectionPool;
 import repairservice.idao.IWorkRequestPaymentDao;
-import repairservice.model.DeviceBrandService;
 import repairservice.model.WorkRequest;
 import repairservice.model.WorkRequestPayment;
 

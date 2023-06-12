@@ -1,17 +1,20 @@
-package repairservice.model;
+package repairshop.dataaccess.model.customerdevice;
 
-public class DeviceBrandService {
+import repairshop.dataaccess.device.Device;
+import repairshop.dataaccess.model.customer.Customer;
+
+public class CustomerDevice {
 
 	private int customerDeviceId;
 	private String serialNumber;
 	private Customer customer;	// Foreign key reference
 	private Device device;		// Foreign key reference
 	
-	public DeviceBrandService() {
+	public CustomerDevice() {
 		
 	}
 	
-	public DeviceBrandService(int customerDeviceId, String serialNumber, Customer customer, Device device) {
+	public CustomerDevice(int customerDeviceId, String serialNumber, Customer customer, Device device) {
 		this.customerDeviceId = customerDeviceId;
 		this.serialNumber = serialNumber;
 		this.customer = customer;
@@ -50,5 +53,11 @@ public class DeviceBrandService {
 		this.device = device;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getCustomerDeviceId() + " | " + this.getSerialNumber() + " | " + 
+				this.getCustomer().getCustomerId() + " | " + this.getDevice().getDeviceId();
+	}
 
 }
+

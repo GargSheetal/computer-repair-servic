@@ -2,15 +2,37 @@ package repairservice.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "work_request")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class WorkRequest {
 
+	@XmlAttribute(name = "work_request_id", required = true)
 	private int workRequestId;
+	
+	@XmlElement(name = "work_type")
 	private WorkType workType;		// Foreign key reference
+	@XmlElement(name = "customer_device")
 	private CustomerDevice customerDevice;		// Foreign key reference
+	
+	@XmlElement(name = "created_timestamp")
 	private Date createdTimestamp;
+	
+	@XmlElement(name = "last_updated_timestamp")
 	private Date lastUpdatedTimestamp;
+	
+	@XmlElement(name = "completed_timestamp")
 	private Date completedTimestamp;
+	
+	@XmlElement(name = "amount")
 	private double amount;
+	
+	@XmlElement(name = "work_request_description")
 	private String workRequestDescription;
 	
 	public WorkRequest() {}

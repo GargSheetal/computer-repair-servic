@@ -1,11 +1,25 @@
 package repairservice.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerDevice {
 
+	@XmlAttribute(name="customer_device_id")
 	private int customerDeviceId;
+	
+	@XmlElement(name="serial_number")
 	private String serialNumber;
-	private Customer customer;	// Foreign key reference
-	private Device device;		// Foreign key reference
+	
+	@XmlElement(name="customer")
+	private Customer customer = new Customer();	// Foreign key reference
+	
+	@XmlElement(name="device")
+	private Device device = new Device();		// Foreign key reference
 	
 	public CustomerDevice() {
 		
@@ -50,6 +64,13 @@ public class CustomerDevice {
 		this.device = device;
 	}
 	
-
+	public String toString() {
+		return ("CustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
+				"Serail Number: " + this.getSerialNumber() + "\n" +
+				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
+				"Device ID: " + this.getDevice().getDeviceId() + "\n");
+	}
+	
 }
+
 

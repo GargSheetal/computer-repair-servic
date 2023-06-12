@@ -37,7 +37,6 @@ public class ConnectionPool {
 		dataSource.setMaxWaitMillis(20000); 
 
 		return dataSource.getConnection();
-
 	}
 	
 	public static void releaseConnection(Connection connection) throws SQLException {
@@ -62,3 +61,5 @@ public class ConnectionPool {
     }
 	
 }
+
+

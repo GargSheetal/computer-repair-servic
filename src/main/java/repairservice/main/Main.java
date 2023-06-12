@@ -13,12 +13,15 @@ import repairservice.daoimpl.DeviceTypeDaoImpl;
 import repairservice.db.ConnectionPool;
 import repairservice.model.Customer;
 import repairservice.model.CustomerDevice;
+import repairservice.model.CustomerDevices;
+import repairservice.model.Customers;
 import repairservice.model.DeviceType;
 import repairservice.service.CustomerDeviceService;
 import repairservice.service.CustomerService;
 import repairservice.service.DeviceTypeService;
 import repairservice.xml.XMLDOMParser;
 import repairservice.xml.XMLValidationDriver;
+import repairservice.xml.XmlJAXBParser;
 
 public class Main {
 
@@ -93,11 +96,21 @@ public class Main {
 		System.out.println("-------------------------");
 		
 		// parsing xml file with DOM parser
+		System.out.println("\n-------- Parsing Xml using DOM parser --------");
 		try {
 			XMLDOMParser.parse();
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
+		
+		// parsing xml file with JAXB parser (Unmarshalling)
+		System.out.println("\n-------- Parsing customers.xml using JAXB parser --------");
+		XmlJAXBParser.unmarshallCustomer("./src/main/resources/repairservice/xmldata/customers.xml", Customers.class);
+		
+		System.out.println("\n-------- Parsing customer_devices.xml using JAXB parser --------");
+		XmlJAXBParser.unmarshallCustDevice("src/main/resources/repairservice/xmldata/customer_devices.xml", CustomerDevices.class);
+		
+		
 	}
 
 }

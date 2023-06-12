@@ -11,7 +11,6 @@ import java.util.List;
 import repairservice.db.ConnectionPool;
 import repairservice.idao.IWorkRequestDao;
 import repairservice.model.CustomerDevice;
-import repairservice.model.DeviceBrandService;
 import repairservice.model.WorkRequest;
 import repairservice.model.WorkType;
 
