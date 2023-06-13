@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 import repairshop.dataaccess.db.DatabaseConnectionManager;
-import repairshop.dataaccess.model.customerdevice.*;
+import repairshop.dataaccess.model.CustomerDevice.*;
 
 public class CustomerDeviceService {
 
-	private CustomerDeviceDaoImpl customerDeviceDao;
+	private CustomerDeviceDaoImpl customerDeviceDaoImpl;
 	private DatabaseConnectionManager connectionManager;
 	
 	public CustomerDeviceService() throws IOException {
-		this.customerDeviceDao = new CustomerDeviceDaoImpl();
+		this.customerDeviceDaoImpl = new CustomerDeviceDaoImpl();
 		this.connectionManager = new DatabaseConnectionManager();
 	}
 	
@@ -27,8 +27,8 @@ public class CustomerDeviceService {
             this.connectionManager.beginTransaction(connection);
 
             // business logic
-            int customerDeviceId = customerDeviceDao.create(connection, customerDevice);
-            createdCustomerDevice = customerDeviceDao.getById(connection, customerDeviceId);
+            int customerDeviceId = customerDeviceDaoImpl.create(connection, customerDevice);
+            createdCustomerDevice = customerDeviceDaoImpl.getById(connection, customerDeviceId);
 
             this.connectionManager.commitTransaction(connection);
         } catch (SQLException e) {
@@ -42,12 +42,12 @@ public class CustomerDeviceService {
 	}
 	
 	
-	public CustomerDevice getById(int customerDeviceId) throws SQLException {
+	public CustomerDevice getCustomerDeviceById(int customerDeviceId) throws SQLException {
 		Connection connection = null;
 		CustomerDevice customerDevice = null;
 		try {
             connection = connectionManager.getConnection();
-            customerDevice = customerDeviceDao.getById(connection, customerDeviceId);
+            customerDevice = customerDeviceDaoImpl.getById(connection, customerDeviceId);
         } finally {
         	this.connectionManager.closeConnection(connection);
         }
@@ -55,12 +55,12 @@ public class CustomerDeviceService {
 	}
 	
 	
-	public List<CustomerDevice> getAll() throws SQLException {
+	public List<CustomerDevice> getAllCustomerDevices() throws SQLException {
 		Connection connection = null;
 		List<CustomerDevice> customerDeviceList = null;
 		try {
             connection = connectionManager.getConnection();
-            customerDeviceList = customerDeviceDao.getAll(connection);
+            customerDeviceList = customerDeviceDaoImpl.getAll(connection);
         } finally {
         	this.connectionManager.closeConnection(connection);
         }
@@ -75,7 +75,7 @@ public class CustomerDeviceService {
 	        this.connectionManager.beginTransaction(connection);
 	
 	        // business logic
-	        customerDeviceDao.updateById(connection, customerDevice);
+	        customerDeviceDaoImpl.updateById(connection, customerDevice);
 	        System.out.println("CustomerDevice updated successfully");
 	
 	        this.connectionManager.commitTransaction(connection);
@@ -97,7 +97,7 @@ public class CustomerDeviceService {
 	        this.connectionManager.beginTransaction(connection);
 	
 	        // business logic
-	        customerDeviceDao.deleteById(connection, customerDeviceId);
+	        customerDeviceDaoImpl.deleteById(connection, customerDeviceId);
 	        System.out.println("CustomerDevice deleted successfully");
 	
 	        this.connectionManager.commitTransaction(connection);
@@ -110,4 +110,17 @@ public class CustomerDeviceService {
 		return;
 	}
 
+	
+    public List<CustomerDevice> getAllCustomerDevicesByCustomerId(int customerId) throws SQLException {
+    	Connection connection = null;
+    	List<CustomerDevice> customerDeviceList = null;
+        
+    	try {
+            connection = connectionManager.getConnection();
+            customerDeviceList = customerDeviceDaoImpl.getAllByCustomerId(connection, customerId);
+        } finally {
+        	this.connectionManager.closeConnection(connection);
+        }
+		return customerDeviceList;
+    }
 }

@@ -1,7 +1,7 @@
 show databases;
 use computer_repair_service;
-select * from technicians;
-desc work_request_payments;
+select * from work_types;
+desc customer_devices;
 -- INSERT into customer(last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
 	('Potter', 'Harry', 'hp@gmail.com', '3456789012'),

@@ -1,11 +1,24 @@
-package repairshop.dataaccess.model.customer;
+package repairshop.dataaccess.model.Customer;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "customer")
 public class Customer {
-
+	
+	@XmlAttribute(name = "customer_id", required = true)
 	private int customerId;
+	
+	@XmlElement(name = "last_name")
 	private String lastName;
+	
+	@XmlElement(name = "rest_of_name")
 	private String restOfName;
+	
+	@XmlElement(name = "email")
 	private String email;
+	
+	@XmlElement(name = "phone")
 	private String phone;
 	
 	public Customer() {
@@ -25,7 +38,7 @@ public class Customer {
 		this.email = email;
 		this.phone = phone;
 	}
-
+	
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -68,10 +81,23 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return ("Customer ID: " + this.getCustomerId() + " | " + 
-				"Customer Last name: " + this.getLastName() + " | " + 
-				"Customer Rest of name: " + this.getRestOfName() + " | " + 
-				"Customer Email: " + this.getEmail() + " | " + 
-				"Customer Phone: " + this.getPhone()) + "\n";
+		return ("Customer ID: " + this.getCustomerId() + "\n" + 
+				"Customer Last name: " + this.getLastName() + "\n" + 
+				"Customer Rest of name: " + this.getRestOfName() + "\n" + 
+				"Customer Email: " + this.getEmail() + "\n" +  
+				"Customer Phone: " + this.getPhone() + "\n");
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+

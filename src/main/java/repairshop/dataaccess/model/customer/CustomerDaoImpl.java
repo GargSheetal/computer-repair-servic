@@ -1,4 +1,4 @@
-package repairshop.dataaccess.model.customer;
+package repairshop.dataaccess.model.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +12,9 @@ public class CustomerDaoImpl implements ICustomerDao {
 	
 	public int create(Connection connection, Customer customer) throws SQLException {
 		int generatedId = -1;
-		String query = "INSERT into customers (last_name, rest_of_name, email, phone) values(?,?,?,?)";
+		String command = "INSERT into customers (last_name, rest_of_name, email, phone) values(?,?,?,?)";
 		
-		try(PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
+		try(PreparedStatement ps = connection.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)){
 			ps.setString(1, customer.getLastName());
 			ps.setString(2, customer.getRestOfName());
 			ps.setString(3, customer.getEmail());
@@ -39,6 +39,24 @@ public class CustomerDaoImpl implements ICustomerDao {
 		
 		try(PreparedStatement ps = connection.prepareStatement(query)) {
 			ps.setInt(1, customerId);
+			
+			try(ResultSet resultSet = ps.executeQuery()){
+				if (resultSet.next()) {
+					CustomerAdapter customerAdapter = new CustomerAdapter();
+		            customer = customerAdapter.adaptFromDb(resultSet);
+		        }
+			}
+	        
+		}
+		return customer;
+	}
+	
+	public Customer getByEmail(Connection connection, String email) throws SQLException {
+		Customer customer = null;
+		String query = "SELECT * from customers where email=?"; 
+		
+		try(PreparedStatement ps = connection.prepareStatement(query)) {
+			ps.setString(1, email);
 			
 			try(ResultSet resultSet = ps.executeQuery()){
 				if (resultSet.next()) {

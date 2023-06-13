@@ -1,4 +1,4 @@
-package repairshop.dataaccess.model.customer;
+package repairshop.dataaccess.model.Customer;
 
 import repairshop.dataaccess.model.shared.IBaseEntityDao;
 

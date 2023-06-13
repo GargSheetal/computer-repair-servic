@@ -1,14 +1,29 @@
-package repairshop.dataaccess.model.customerdevice;
+package repairshop.dataaccess.model.CustomerDevice;
 
-import repairshop.dataaccess.device.Device;
-import repairshop.dataaccess.model.customer.Customer;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import repairshop.dataaccess.model.Customer.Customer;
+import repairshop.dataaccess.model.Device.Device;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "customer_device")
 public class CustomerDevice {
 
+	@XmlAttribute(name="customer_device_id")
 	private int customerDeviceId;
+	
+	@XmlElement(name="serial_number")
 	private String serialNumber;
-	private Customer customer;	// Foreign key reference
-	private Device device;		// Foreign key reference
+	
+	@XmlElement(name="customer")
+	private Customer customer = new Customer();	// Foreign key reference
+	
+	@XmlElement(name="device")
+	private Device device = new Device();		// Foreign key reference
 	
 	public CustomerDevice() {
 		
@@ -53,11 +68,14 @@ public class CustomerDevice {
 		this.device = device;
 	}
 	
-	@Override
 	public String toString() {
-		return this.getCustomerDeviceId() + " | " + this.getSerialNumber() + " | " + 
-				this.getCustomer().getCustomerId() + " | " + this.getDevice().getDeviceId();
+		return ("CustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
+				"Serail Number: " + this.getSerialNumber() + "\n" +
+				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
+				"Device ID: " + this.getDevice().getDeviceId() + "\n");
 	}
-
+	
 }
+
+
 

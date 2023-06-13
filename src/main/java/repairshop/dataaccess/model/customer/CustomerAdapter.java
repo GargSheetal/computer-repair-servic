@@ -1,4 +1,4 @@
-package repairshop.dataaccess.model.customer;
+package repairshop.dataaccess.model.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="devices.xsd">
+	<device device_id="1">
+		<device_name>iPhone 14</device_name>
+		<device_type device_type_id="1">
+			<device_type_name>smartphone</device_type_name>
+			<device_brand device_brand_id="1">
+				<brand_name>Apple</brand_name>
+			</device_brand>
+		</device_type>
+	</device>
+	<device device_id="2">
+		<device_name>iPhone 13</device_name>
+		<device_type device_type_id="1">
+			<device_type_name>smartphone</device_type_name>
+			<device_brand device_brand_id="1">
+				<brand_name>Apple</brand_name>
+			</device_brand>
+		</device_type>
+	</device>
+	<device device_id="3">
+		<device_name>Galaxy S20</device_name>
+		<device_type device_type_id="2">
+			<device_type_name>smartphone</device_type_name>
+			<device_brand device_brand_id="2">
+				<brand_name>Samsung</brand_name>
+			</device_brand>
+		</device_type>
+	</device>
+	<device device_id="5">
+		<device_name>Pixel 6</device_name>
+		<device_type device_type_id="3">
+			<device_type_name>smartphone</device_type_name>
+			<device_brand device_brand_id="4">
+				<brand_name>Google</brand_name>
+			</device_brand>
+		</device_type>
+	</device>	
+</devices>

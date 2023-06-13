@@ -3,20 +3,23 @@ package repairshop.service;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import repairshop.dataaccess.db.DatabaseConnectionManager;
-import repairshop.dataaccess.model.customer.Customer;
-import repairshop.dataaccess.model.customer.CustomerDaoImpl;
+import repairshop.dataaccess.model.Customer.*;
+
 
 public class CustomerService {
 
-	private CustomerDaoImpl customerDao;
+	private CustomerDaoImpl customerDaoImpl;
 	private DatabaseConnectionManager connectionManager;
 	
 	public CustomerService() throws IOException {
-		this.customerDao = new CustomerDaoImpl();
+		this.customerDaoImpl = new CustomerDaoImpl();
 		this.connectionManager = new DatabaseConnectionManager();
 	}
 	
@@ -28,8 +31,8 @@ public class CustomerService {
             this.connectionManager.beginTransaction(connection);
 
             // business logic
-            int customerId = customerDao.create(connection, customer);
-            createdCustomer = customerDao.getById(connection, customerId);
+            int customerId = customerDaoImpl.create(connection, customer);
+            createdCustomer = customerDaoImpl.getById(connection, customerId);
 
             this.connectionManager.commitTransaction(connection);
         } catch (SQLException e) {
@@ -43,25 +46,36 @@ public class CustomerService {
 	}
 	
 	
-	public Customer getById(int customerId) throws SQLException {
+	public Customer getCustomerById(int customerId) throws SQLException {
 		Connection connection = null;
 		Customer customer = null;
 		try {
             connection = connectionManager.getConnection();
-            customer = customerDao.getById(connection, customerId);
+            customer = customerDaoImpl.getById(connection, customerId);
         } finally {
         	this.connectionManager.closeConnection(connection);
         }
 		return customer;
 	}
 	
+	public Customer getCustomerByEmail(String email) throws SQLException {
+		Connection connection = null;
+		Customer customer = null;
+		try {
+            connection = connectionManager.getConnection();
+            customer = customerDaoImpl.getByEmail(connection, email);
+        } finally {
+        	this.connectionManager.closeConnection(connection);
+        }
+		return customer;
+	}
 	
-	public List<Customer> getAll() throws SQLException {
+	public List<Customer> getAllCustomers() throws SQLException {
 		Connection connection = null;
 		List<Customer> customerList = null;
 		try {
             connection = connectionManager.getConnection();
-            customerList = customerDao.getAll(connection);
+            customerList = customerDaoImpl.getAll(connection);
         } finally {
         	this.connectionManager.closeConnection(connection);
         }
@@ -76,7 +90,7 @@ public class CustomerService {
 	        this.connectionManager.beginTransaction(connection);
 	
 	        // business logic
-	        customerDao.updateById(connection, customer);
+	        customerDaoImpl.updateById(connection, customer);
 	        System.out.println("Customer updated successfully");
 	
 	        this.connectionManager.commitTransaction(connection);
@@ -98,7 +112,7 @@ public class CustomerService {
 	        this.connectionManager.beginTransaction(connection);
 	
 	        // business logic
-	        customerDao.deleteById(connection, customerId);
+	        customerDaoImpl.deleteById(connection, customerId);
 	        System.out.println("Customer deleted successfully");
 	
 	        this.connectionManager.commitTransaction(connection);
@@ -110,5 +124,6 @@ public class CustomerService {
 	    }
 		return;
 	}
+    
 
 }
