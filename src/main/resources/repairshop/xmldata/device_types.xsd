@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="device_types">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="device_type" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="device_type_name" type="xs:string"/>
+              <xs:element name="device_brand">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="brand_name" type="xs:string"/>
+                  </xs:sequence>
+                  <xs:attribute name="device_brand_id" type="xs:integer" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="device_type_id" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

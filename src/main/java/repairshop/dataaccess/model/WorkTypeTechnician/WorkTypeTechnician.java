@@ -1,0 +1,56 @@
+package repairshop.dataaccess.model.WorkTypeTechnician;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import repairshop.dataaccess.model.Technician.Technician;
+import repairshop.dataaccess.model.WorkType.WorkType;
+
+@XmlRootElement(name = "work_type_technician")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class WorkTypeTechnician {
+
+	@XmlElement(name = "skill_level")
+	private int skillLevel;
+	
+	@XmlElement(name = "work_type")
+	private WorkType workType = new WorkType();
+	
+	@XmlElement(name = "technician")
+	private Technician technician = new Technician();
+	
+	public WorkTypeTechnician() {}
+
+	public WorkTypeTechnician(int skillLevel, WorkType workType, Technician technician) {
+		this.skillLevel = skillLevel;
+		this.workType = workType;
+		this.technician = technician;
+	}
+
+	public int getSkillLevel() {
+		return skillLevel;
+	}
+
+	public void setSkillLevel(int skillLevel) {
+		this.skillLevel = skillLevel;
+	}
+
+	public WorkType getWorkType() {
+		return workType;
+	}
+
+	public void setWorkType(WorkType workType) {
+		this.workType = workType;
+	}
+
+	public Technician getTechnician() {
+		return technician;
+	}
+
+	public void setTechnician(Technician technician) {
+		this.technician = technician;
+	};
+	
+}

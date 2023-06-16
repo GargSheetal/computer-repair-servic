@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<customer_devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="customer_devices.xsd">
+	<customer_device customer_device_id="1">
+		<serial_number>IPhone14-001</serial_number>
+		<customer customer_id = "1">
+			<last_name>Shelton</last_name>
+			<rest_of_name>Mark</rest_of_name>
+			<email>ms@gmail.com</email>
+			<phone>2345645678</phone>
+		</customer>
+		<device device_id = "1"/>
+	</customer_device>
+</customer_devices>

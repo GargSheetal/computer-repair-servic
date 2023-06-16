@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<technicians xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="technicians.xsd">
+	<technician technician_id="1">
+		<last_name>Stark</last_name>
+		<rest_of_name>Tony</rest_of_name>
+		<email>ironman@marvel.com</email>
+		<phone>1112223333</phone>
+	</technician>
+	<technician technician_id="2">
+		<last_name>Rogers</last_name>
+		<rest_of_name>Steve</rest_of_name>
+		<email>captainamerica@marvel.com</email>
+		<phone>2223334444</phone>
+	</technician>
+	<technician technician_id="3">
+		<last_name>Thor</last_name>
+		<rest_of_name></rest_of_name>
+		<email>odinson@marvel.com</email>
+		<phone>3334445555</phone>
+	</technician>
+</technicians>
