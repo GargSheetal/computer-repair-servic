@@ -6,18 +6,23 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import repairshop.dataaccess.model.DeviceBrand.DeviceBrand;
 
 @XmlRootElement(name = "device_type")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeviceType {
 	
+	@JsonProperty("device_type_id")
 	@XmlAttribute(name = "device_type_id", required = true)
 	private int deviceTypeId;
 	
+	@JsonProperty("device_type_name")
 	@XmlElement(name = "device_type_name")
 	private String deviceTypeName;
 	
+	@JsonProperty("device_brand")
 	@XmlElement(name = "device_brand")
 	private DeviceBrand deviceBrand = new DeviceBrand();;	// Foreign key reference
 	
@@ -62,3 +67,4 @@ public class DeviceType {
 	}
 	
 }
+

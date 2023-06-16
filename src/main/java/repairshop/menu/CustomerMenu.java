@@ -6,13 +6,16 @@ import java.util.Scanner;
 
 import javax.naming.directory.InvalidAttributesException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import repairshop.dataaccess.model.Customer.*;
 import repairshop.service.*;
 
 public class CustomerMenu {
 	
+	private static final Logger logger = LogManager.getLogger(CustomerMenu.class);
 	private static Scanner scanner = new Scanner(System.in);
-//	private static CustomerDaoImpl customerDao = new CustomerDaoImpl();
 	private CustomerService customerService;
 	
 	public CustomerMenu() throws IOException {
@@ -39,33 +42,33 @@ public class CustomerMenu {
 			}
 		}
 		catch(InvalidAttributesException e) {
-			System.out.println("InvalidAttributesException : " + e.getMessage());
+			logger.info("InvalidAttributesException : " + e.getMessage());
 			customer = login();
 		}
-		System.out.println("\nLogin Successful. Welcome " + customer.getRestOfName() + " " + customer.getLastName());
+		logger.info("\nLogin Successful. Welcome " + customer.getRestOfName() + " " + customer.getLastName());
 		return customer;
 	}
 	
 	public String requestCustomerLastName() {
-		System.out.println("Enter Last Name: ");
+		logger.info("Enter Last Name: ");
 		String lastName = scanner.nextLine();
 		return lastName;	
 	}
 
 	public String requestCustomerRestOfName() {
-		System.out.println("Enter Rest Of Name: ");
+		logger.info("Enter Rest Of Name: ");
 		String restOfName = scanner.nextLine();
 		return restOfName;	
 	}
 	
 	public String requestCustomerEmail() {
-		System.out.println("Enter Email: ");
+		logger.info("Enter Email: ");
 		String email = scanner.nextLine();
 		return email;	
 	}
 	
 	public String requestCustomerPhone() {
-		System.out.println("Enter Phone: ");
+		logger.info("Enter Phone: ");
 		String phone = scanner.nextLine();
 		return phone;	
 	}

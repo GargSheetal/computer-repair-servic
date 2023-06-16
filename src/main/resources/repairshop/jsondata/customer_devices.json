@@ -1,0 +1,165 @@
+{
+    "customer_devices": [
+        {
+            "customer_device_id": 1,
+            "serial_number": "iphone14-001",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 2,
+            "serial_number": "macbookpro-001",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 3,
+            "serial_number": "galaxys20-002",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 4,
+            "serial_number": "note10-002",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 5,
+            "serial_number": "pixel6-003",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 6,
+            "serial_number": "chromebook5-003",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        },
+        {
+            "customer_device_id": 7,
+            "serial_number": "surface1-004",
+            "customer": {
+                "customer_id": 1,
+                "last_name": "Shelton",
+                "rest_of_name": "Mark",
+                "email": "ms@gmail.com",
+                "phone": "2345645678"
+            },
+            "device": {
+                "device_id": 1,
+                "device_name": "iPhone 14",
+                "device_type": {
+                    "device_type_id": 1,
+                    "device_type_name": "smartphone",
+                    "device_brand": {
+                        "device_brand_id": 1,
+                        "brand_name": "Apple"
+                    }
+                }
+            }
+        }
+    ]
+}

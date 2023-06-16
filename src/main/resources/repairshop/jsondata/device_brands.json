@@ -1,0 +1,20 @@
+{
+    "device_brands": [
+        {
+            "device_brand_id": 1,
+            "brand_name": "Apple"
+        },
+        {
+            "device_brand_id": 2,
+            "brand_name": "Samsung"
+        },
+        {
+            "device_brand_id": 3,
+            "brand_name": "Microsoft"
+        },
+        {
+            "device_brand_id": 4,
+            "brand_name": "Google"
+        }
+    ]
+}

@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import repairshop.dataaccess.model.Device.Device;
 import repairshop.dataaccess.model.DeviceBrand.*;
 import repairshop.dataaccess.model.DeviceType.*;
@@ -15,6 +18,7 @@ import repairshop.service.*;
 
 public class WorkTypeMenu {
 	
+	private static final Logger logger = LogManager.getLogger(WorkTypeMenu.class);
 	private static Scanner scanner = new Scanner(System.in);
 	private DeviceService deviceService;
 	private WorkService workService;
@@ -33,7 +37,7 @@ public class WorkTypeMenu {
 	
 	public void queryDeviceWorkType() throws SQLException {
 		List<DeviceBrand> brandList = deviceService.getAllDeviceBrands();
-		System.out.println("\nDevice Brands : ");
+		logger.info("\nDevice Brands : ");
 		brandList.forEach(deviceBrand -> System.out.println(deviceBrand.toString()));
 		
 		int deviceBrandId = requestId("\nEnter Device Brand ID : ");
@@ -46,7 +50,7 @@ public class WorkTypeMenu {
 		String selectedDeviceBrandName = selectedDeviceBrand.getBrandName();
 		
 		List<DeviceType> deviceTypeList = deviceService.getAllDeviceTypesByDeviceBrandId(deviceBrandId);
-		System.out.println("\nDevice Types for [" + selectedDeviceBrandName + "] : ");
+		logger.info("\nDevice Types for [" + selectedDeviceBrandName + "] : ");
 		deviceTypeList.forEach(deviceType -> System.out.println(deviceType.toString()));
 		
 		int deviceTypeId = requestId("\nEnter Device Type ID : ");
@@ -59,7 +63,7 @@ public class WorkTypeMenu {
 		String selectedDeviceTypeName = selectedDeviceType.getDeviceTypeName();
 		
 		List<Device> deviceList =  deviceService.getAllDevicesByDeviceTypeId(deviceTypeId);
-		System.out.println("\nDevices for [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + "]: ");
+		logger.info("\nDevices for [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + "]: ");
 		deviceList.forEach(device -> System.out.println(device.toString()));
 		
 		int deviceId = requestId("\nEnter Device ID : ");
@@ -72,7 +76,7 @@ public class WorkTypeMenu {
 		String selectedDeviceName = selectedDevice.getDeviceName();
 		
 		List<WorkType> workTypeList = workService.getAllWorkTypesByDeviceId(deviceId);
-		System.out.println("\nWork Types for [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + " | " + selectedDeviceName + "]: ");
+		logger.info("\nWork Types for [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + " | " + selectedDeviceName + "]: ");
 		workTypeList.forEach(workType -> System.out.println(workType.toString()));
 		
 		int workTypeId = requestId("\nEnter Work Type ID : ");
@@ -84,9 +88,9 @@ public class WorkTypeMenu {
         }
 		String selectedWorkTypeName = selectedWorkType.getWorkDescription();
 		WorkType workType = workService.getWorkTypeById(workTypeId);
-		System.out.println("\nDetails of selected Work Type :");
-		System.out.println("\nDetails of selected Work Type [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + " | " + selectedDeviceName + " | " + selectedWorkTypeName + "]: ");
-		System.out.println(workType.toString());
+		logger.info("\nDetails of selected Work Type :");
+		logger.info("\nDetails of selected Work Type [" + selectedDeviceBrandName + " | " + selectedDeviceTypeName + " | " + selectedDeviceName + " | " + selectedWorkTypeName + "]: ");
+		logger.info(workType.toString());
 	}
 	
 }

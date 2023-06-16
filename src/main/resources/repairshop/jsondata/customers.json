@@ -1,0 +1,39 @@
+{
+	"customers": [
+		{
+			"customer_id": 1,
+			"last_name": "Shelton",
+			"rest_of_name": "Mark",
+			"email": "ms@gmail.com",
+			"phone": "2345645678"
+		},
+		{
+			"customer_id": 2,
+			"last_name": "Potter",
+			"rest_of_name": "Harry",
+			"email": "hp@gmail.com",
+			"phone": "3456789012"
+		},
+		{
+			"customer_id": 3,
+			"last_name": "Parker",
+			"rest_of_name": "Peter",
+			"email": "pp@gmail.com",
+			"phone": "4567890123"
+		},
+		{
+			"customer_id": 4,
+			"last_name": "Jane",
+			"rest_of_name": "Mary",
+			"email": "mj@gmail.com",
+			"phone": "5678901234"
+		},
+		{
+			"customer_id": 5,
+			"last_name": "Goblin",
+			"rest_of_name": "Green",
+			"email": "gb@gmail.com",
+			"phone": "3333355555"
+		}
+	]
+}

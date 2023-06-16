@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import repairshop.dataaccess.model.Technician.Technician;
 import repairshop.dataaccess.model.WorkType.WorkType;
 
@@ -12,12 +14,15 @@ import repairshop.dataaccess.model.WorkType.WorkType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class WorkTypeTechnician {
 
+	@JsonProperty("skill_level")
 	@XmlElement(name = "skill_level")
 	private int skillLevel;
 	
+	@JsonProperty("work_type")
 	@XmlElement(name = "work_type")
 	private WorkType workType = new WorkType();
 	
+	@JsonProperty("technician")
 	@XmlElement(name = "technician")
 	private Technician technician = new Technician();
 	

@@ -1,0 +1,49 @@
+{
+    "device_types": [
+        {
+            "device_type_id": 1,
+            "device_type_name": "smartphone",
+            "device_brand_id": 1
+        },
+        {
+            "device_type_id": 2,
+            "device_type_name": "smartphone",
+            "device_brand_id": 2
+        },
+        {
+            "device_type_id": 3,
+            "device_type_name": "smartphone",
+            "device_brand_id": 4
+        },
+        {
+            "device_type_id": 4,
+            "device_type_name": "tablet",
+            "device_brand_id": 1
+        },
+        {
+            "device_type_id": 5,
+            "device_type_name": "tablet",
+            "device_brand_id": 2
+        },
+        {
+            "device_type_id": 6,
+            "device_type_name": "tablet",
+            "device_brand_id": 3
+        },
+        {
+            "device_type_id": 7,
+            "device_type_name": "laptop",
+            "device_brand_id": 1
+        },
+        {
+            "device_type_id": 8,
+            "device_type_name": "laptop",
+            "device_brand_id": 3
+        },
+        {
+            "device_type_id": 9,
+            "device_type_name": "laptop",
+            "device_brand_id": 4
+        }
+    ]
+}

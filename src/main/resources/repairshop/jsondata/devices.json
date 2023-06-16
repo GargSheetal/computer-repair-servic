@@ -1,0 +1,89 @@
+{
+    "devices": [
+        {
+            "device_id": 1,
+            "device_name": "iPhone 14",
+            "device_type_id": 1
+        },
+        {
+            "device_id": 2,
+            "device_name": "iPhone 13",
+            "device_type_id": 1
+        },
+        {
+            "device_id": 3,
+            "device_name": "Galaxy S20",
+            "device_type_id": 2
+        },
+        {
+            "device_id": 4,
+            "device_name": "Galaxy A14",
+            "device_type_id": 2
+        },
+        {
+            "device_id": 5,
+            "device_name": "Pixel 6",
+            "device_type_id": 3
+        },
+        {
+            "device_id": 6,
+            "device_name": "Pixel 7",
+            "device_type_id": 3
+        },
+        {
+            "device_id": 7,
+            "device_name": "iPad Air",
+            "device_type_id": 4
+        },
+        {
+            "device_id": 8,
+            "device_name": "iPad Pro",
+            "device_type_id": 4
+        },
+        {
+            "device_id": 9,
+            "device_name": "Note 10",
+            "device_type_id": 5
+        },
+        {
+            "device_id": 10,
+            "device_name": "Note 7",
+            "device_type_id": 5
+        },
+        {
+            "device_id": 11,
+            "device_name": "Surface 1",
+            "device_type_id": 6
+        },
+        {
+            "device_id": 12,
+            "device_name": "Surface 3",
+            "device_type_id": 6
+        },
+        {
+            "device_id": 13,
+            "device_name": "Macbook Pro",
+            "device_type_id": 7
+        },
+        {
+            "device_id": 14,
+            "device_name": "Macbook Air",
+            "device_type_id": 7
+        },
+        {
+            "device_id": 15,
+            "device_name": "Windows 11 Pro",
+            "device_type_id": 8
+        },
+        {
+            "device_id": 16,
+            "device_name": "Windows 10 Pro",
+            "device_type_id": 8
+        },
+        {
+            "device_id": 17,
+            "device_name": "Chromebook 5",
+            "device_type_id": 9
+        }
+    ]
+}
