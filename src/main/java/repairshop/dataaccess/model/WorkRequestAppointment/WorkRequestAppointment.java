@@ -9,26 +9,36 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import repairshop.xml.DateAdapter;
 import repairshop.dataaccess.model.Technician.Technician;
 import repairshop.dataaccess.model.WorkRequest.WorkRequest;
 
+@JsonRootName(value = "work_request_appointment")
 @XmlRootElement(name = "work_request_appointment")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class WorkRequestAppointment {
 	
+	@JsonProperty("work_request_appointment_id")
 	@XmlAttribute(name = "work_request_appointment_id", required = true)
 	private int workRequestAppointmentId;
 	
+	@JsonProperty("work_request")
 	@XmlElement(name = "work_request")
 	private WorkRequest workRequest = new WorkRequest();		// Foreign key reference
 	
+	@JsonProperty("technician")
 	@XmlElement(name = "technician")
 	private Technician technician = new Technician();		// Foreign key reference
 	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date appointmentTimestamp;
 	
+	@JsonProperty("technician_notes")
 	@XmlElement(name = "technician_notes")
 	private String technicianNotes;
 	

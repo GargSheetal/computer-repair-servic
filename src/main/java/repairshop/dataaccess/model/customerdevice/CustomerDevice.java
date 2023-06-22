@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import repairshop.dataaccess.model.Customer.Customer;
 import repairshop.dataaccess.model.Device.Device;
 
@@ -13,15 +15,19 @@ import repairshop.dataaccess.model.Device.Device;
 @XmlRootElement(name = "customer_device")
 public class CustomerDevice {
 
-	@XmlAttribute(name="customer_device_id")
+	@JsonProperty("customer_device_id")
+	@XmlAttribute(name = "customer_device_id")
 	private int customerDeviceId;
 	
+	@JsonProperty("serial_number")
 	@XmlElement(name="serial_number")
 	private String serialNumber;
 	
+	@JsonProperty("customer")
 	@XmlElement(name="customer")
 	private Customer customer = new Customer();	// Foreign key reference
 	
+	@JsonProperty("device")
 	@XmlElement(name="device")
 	private Device device = new Device();		// Foreign key reference
 	

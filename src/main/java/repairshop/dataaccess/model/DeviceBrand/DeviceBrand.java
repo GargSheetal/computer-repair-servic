@@ -6,13 +6,17 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @XmlRootElement(name="device_brand")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DeviceBrand {
 	
+	@JsonProperty("device_brand_id")
 	@XmlAttribute(name = "device_brand_id", required = true)
 	private int deviceBrandId;
 	
+	@JsonProperty("brand_name")
 	@XmlElement(name = "brand_name")
 	private String brandName;
 
@@ -49,3 +53,4 @@ public class DeviceBrand {
 	}
 
 }
+

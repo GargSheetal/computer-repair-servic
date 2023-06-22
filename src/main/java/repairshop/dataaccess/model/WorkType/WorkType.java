@@ -6,21 +6,29 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import repairshop.dataaccess.model.Device.Device;
 
+@JsonRootName(value = "work_type")
 @XmlRootElement(name = "work_type")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class WorkType {
 	
+	@JsonProperty("work_type_id")
 	@XmlAttribute(name = "work_type_id", required = true)
 	private int workTypeId;
 	
+	@JsonProperty("work_description")
 	@XmlElement(name = "work_description")
 	private String workDescription;
 	
+	@JsonProperty("price")
 	@XmlElement(name = "price")
 	private double price;
 	
+	@JsonProperty("device")
 	@XmlElement(name = "device")
 	private Device device = new Device();	// Foreign key reference
 	

@@ -6,22 +6,31 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName(value = "technician")
 @XmlRootElement(name = "technician")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Technician {
 
+	@JsonProperty("technician_id")
 	@XmlAttribute(name = "technician_id", required = true)
 	private int technicianId;
 	
+	@JsonProperty("last_name")
 	@XmlElement(name = "last_name")
 	private String lastName;
 	
+	@JsonProperty("rest_of_name")
 	@XmlElement(name = "rest_of_name")
 	private String restOfName;
 	
+	@JsonProperty("email")
 	@XmlElement(name = "email")
 	private String email;
 	
+	@JsonProperty("phone")
 	@XmlElement(name = "phone")
 	private String phone;
 	

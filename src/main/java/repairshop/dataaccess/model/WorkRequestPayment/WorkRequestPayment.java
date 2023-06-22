@@ -9,25 +9,36 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import repairshop.xml.DateAdapter;
 import repairshop.dataaccess.model.WorkRequest.WorkRequest;
 
+@JsonRootName(value = "work_request_payment")
 @XmlRootElement(name = "work_request_payment")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class WorkRequestPayment {
 
+	@JsonProperty("work_request_payment_id")
 	@XmlAttribute(name = "work_request_payment_id", required = true)
 	private int workRequestPaymentId;
 	
+	@JsonProperty("work_request")
 	@XmlElement(name = "work_request")
 	private WorkRequest workRequest = new WorkRequest();	// Foreign key reference
 	
+	@JsonProperty("payment_confirmation_number")
 	@XmlElement(name = "payment_confirmation_number")
 	private String paymentConfirmationNumber;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date paymentTimestamp;
 	
+	@JsonProperty("amount")
 	@XmlElement(name = "amount")
 	private double amount;
 	

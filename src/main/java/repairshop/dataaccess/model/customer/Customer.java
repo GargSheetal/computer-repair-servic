@@ -2,22 +2,31 @@ package repairshop.dataaccess.model.Customer;
 
 import javax.xml.bind.annotation.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
+@JsonRootName(value = "customer")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "customer")
 public class Customer {
 	
+	@JsonProperty("customer_id")
 	@XmlAttribute(name = "customer_id", required = true)
 	private int customerId;
 	
+	@JsonProperty("last_name")
 	@XmlElement(name = "last_name")
 	private String lastName;
 	
+	@JsonProperty("rest_of_name")
 	@XmlElement(name = "rest_of_name")
 	private String restOfName;
 	
+	@JsonProperty("email")
 	@XmlElement(name = "email")
 	private String email;
 	
+	@JsonProperty("phone")
 	@XmlElement(name = "phone")
 	private String phone;
 	

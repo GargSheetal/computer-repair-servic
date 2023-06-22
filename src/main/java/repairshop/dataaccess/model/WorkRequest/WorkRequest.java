@@ -9,35 +9,48 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import repairshop.xml.DateAdapter;
 import repairshop.dataaccess.model.CustomerDevice.CustomerDevice;
 import repairshop.dataaccess.model.WorkType.WorkType;
 
+@JsonRootName(value = "work_request")
 @XmlRootElement(name = "work_request")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class WorkRequest {
 
+	@JsonProperty("work_request_id")
 	@XmlAttribute(name = "work_request_id", required = true)
 	private int workRequestId;
 	
+	@JsonProperty("work_type")
 	@XmlElement(name = "work_type")
 	private WorkType workType = new WorkType();		// Foreign key reference
 	
+	@JsonProperty("customer_device")
 	@XmlElement(name = "customer_device")
 	private CustomerDevice customerDevice = new CustomerDevice();		// Foreign key reference
 	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date createdTimestamp;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date lastUpdatedTimestamp;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date completedTimestamp;
 	
+	@JsonProperty("amount")
 	@XmlElement(name = "amount")
 	private double amount;
 	
+	@JsonProperty("work_request_description")
 	@XmlElement(name = "work_request_description")
 	private String workRequestDescription;
 	

@@ -1,0 +1,25 @@
+{
+    "technicians": [
+        {
+            "technician_id": 1,
+            "last_name": "Stark",
+            "rest_of_name": "Tony",
+            "email": "ironman@marvel.com",
+            "phone": "1112223333"
+        },
+        {
+            "technician_id": 2,
+            "last_name": "Rogers",
+            "rest_of_name": "Steve",
+            "email": "captainamerica@marvel.com",
+            "phone": "2223334444"
+        },
+        {
+            "technician_id": 3,
+            "last_name": "Thor",
+            "rest_of_name": "",
+            "email": "odinson@marvel.com",
+            "phone": "3334445555"
+        }
+    ]
+}

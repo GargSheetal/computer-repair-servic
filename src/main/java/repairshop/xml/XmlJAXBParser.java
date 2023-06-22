@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import repairshop.dataaccess.model.CustomerDevice.*;
@@ -31,6 +32,25 @@ public class XmlJAXBParser {
 		return null;
 	}
 	
+	public static void marshalToXml(Object object, String fileName) {
+        try {
+            // Step 1: Create JAXBContext
+            JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass());
+
+            // Step 2: Create Marshaller
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Step 3: Marshal Java object to XML
+            File file = new File(fileName);
+            marshaller.marshal(object, file);
+
+            System.out.println("Java object marshalled to XML successfully.");
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public static void unmarshallCustomer(String fileName, Class<?> clazz) {
 		
 		Customers customers =  unmarshall(fileName, clazz);
@@ -40,7 +60,6 @@ public class XmlJAXBParser {
 		customerList.forEach(customer -> System.out.println(customer.toString()));
 	}
 	
-
 	public static void unmarshallCustDevice(String fileName, Class<?> clazz) {
 		
 		CustomerDevices custDevices = unmarshall(fileName, clazz);
@@ -49,13 +68,6 @@ public class XmlJAXBParser {
 		List<CustomerDevice> custDeviceList = custDevices.getCustDeviceList();
 		custDeviceList.forEach(custDevice -> System.out.println(custDevice.toString()));
 		
-//		for(CustomerDevice custDevice: custDeviceList) {
-//			System.out.println("CustomerDevice ID: " + custDevice.getCustomerDeviceId());
-//			System.out.println("Serail Number: " + custDevice.getSerialNumber());
-//			System.out.println("Customer ID: " + custDevice.getCustomer().getCustomerId());
-//			System.out.println("Device ID: " + custDevice.getDevice().getDeviceId());
-//			System.out.println();
-//		}
 	}
 		
 	
