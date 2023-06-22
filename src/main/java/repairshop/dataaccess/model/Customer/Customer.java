@@ -96,7 +96,7 @@ public class Customer {
 				"Customer Email: " + this.getEmail() + "\n" +  
 				"Customer Phone: " + this.getPhone() + "\n");
 	}
-	
+		
 }
 
 

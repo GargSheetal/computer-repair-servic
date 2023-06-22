@@ -131,6 +131,14 @@ public class WorkRequest {
 	public void setWorkRequestDescription(String workRequestDescription) {
 		this.workRequestDescription = workRequestDescription;
 	}
+
+	@Override
+	public String toString() {
+		return "WorkRequest [workRequestId=" + workRequestId + ", workType=" + workType + ", customerDevice="
+				+ customerDevice + ", createdTimestamp=" + createdTimestamp + ", lastUpdatedTimestamp="
+				+ lastUpdatedTimestamp + ", completedTimestamp=" + completedTimestamp + ", amount=" + amount
+				+ ", workRequestDescription=" + workRequestDescription + "]";
+	}
 	
 }
 

@@ -39,3 +39,60 @@ Details of selected Work Type [Apple | smartphone | iPhone 14 | Screen Replaceme
 2023-06-16 00:06:17.250 [main] INFO  repairshop.menu.MenuHelper - 
 
  Do you want to go back to Main Menu : 
+2023-06-16 12:13:39.999 [main] INFO  repairshop.menu.MenuHelper - 
+ *** Presenting Parser Menu *** 
+2023-06-16 12:13:40.000 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Parse XML using JAXB Parser
+2023-06-16 12:13:40.000 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Parse XML using DOM Parser
+2023-06-16 12:13:40.000 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Parse JSON using Jackson Parser
+2023-06-16 12:13:40.000 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-16 12:13:48.474 [main] INFO  repairshop.menu.ParserMenu - 
+--- Parsing Customer JSON using Jackson Parser ---
+2023-06-16 12:13:48.582 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Parser Menu : 
+2023-06-16 12:14:35.209 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-16 12:14:35.210 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-16 12:14:35.210 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-16 12:14:35.210 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-16 12:14:35.210 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-16 12:15:06.177 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-16 12:15:14.081 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-16 12:15:14.081 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Main Menu : 
+2023-06-16 12:15:52.229 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-16 12:15:52.230 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-16 12:15:52.230 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-16 12:15:52.230 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-16 12:15:52.230 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-16 12:15:54.602 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Device Brands : 
+2023-06-16 12:16:08.281 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Device Types for [Apple] : 
+2023-06-16 12:16:16.611 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Devices for [Apple | smartphone]: 
+2023-06-16 12:16:26.361 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Work Types for [Apple | smartphone | iPhone 14]: 
+2023-06-16 12:16:36.692 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Details of selected Work Type :
+2023-06-16 12:16:36.693 [main] INFO  repairshop.menu.WorkTypeMenu - 
+Details of selected Work Type [Apple | smartphone | iPhone 14 | Screen Replacement]: 
+2023-06-16 12:16:36.693 [main] INFO  repairshop.menu.WorkTypeMenu - Work Type ID: 1 | Work Description: Screen Replacement | Price: 200.0 | Device ID: 1
+2023-06-16 12:16:36.694 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Main Menu : 

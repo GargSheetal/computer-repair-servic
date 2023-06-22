@@ -83,5 +83,10 @@ public class Technician {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Technician [technicianId=" + technicianId + ", lastName=" + lastName + ", restOfName=" + restOfName
+				+ ", email=" + email + ", phone=" + phone + "]";
+	}
 }

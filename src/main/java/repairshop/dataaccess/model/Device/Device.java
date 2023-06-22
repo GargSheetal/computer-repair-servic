@@ -26,9 +26,7 @@ public class Device {
 	@XmlElement(name = "device_type")
 	private DeviceType deviceType = new DeviceType();	// Foreign key reference
 	
-	public Device() {
-		
-	}
+	public Device() {}
 	
 	public Device(int deviceId, String deviceName, DeviceType deviceType) {
 		this.deviceId = deviceId;

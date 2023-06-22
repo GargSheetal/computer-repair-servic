@@ -31,10 +31,14 @@ public class CustomerDevice {
 	@XmlElement(name="device")
 	private Device device = new Device();		// Foreign key reference
 	
-	public CustomerDevice() {
-		
-	}
+	public CustomerDevice() {}
 	
+	public CustomerDevice(String serialNumber, Customer customer, Device device) {
+		this.serialNumber = serialNumber;
+		this.customer = customer;
+		this.device = device;
+	}
+
 	public CustomerDevice(int customerDeviceId, String serialNumber, Customer customer, Device device) {
 		this.customerDeviceId = customerDeviceId;
 		this.serialNumber = serialNumber;
@@ -82,6 +86,5 @@ public class CustomerDevice {
 	}
 	
 }
-
 
 
