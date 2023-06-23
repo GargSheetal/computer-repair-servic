@@ -24,3 +24,61 @@ Details of selected Work Type [Apple | smartphone | iPhone 14 | Screen Replaceme
 2023-06-23 00:04:23.077 [main] INFO  repairshop.menu.MenuHelper - 
 
  Do you want to go back to Main Menu : 
+2023-06-23 09:27:02.176 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-23 09:27:02.177 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-23 09:27:02.178 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-23 09:27:02.178 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-23 09:27:02.178 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-23 09:27:07.691 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-23 09:27:15.548 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-23 09:27:15.548 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Main Menu : 
+2023-06-23 09:28:29.432 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-23 09:28:29.433 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-23 09:28:29.433 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-23 09:28:29.433 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-23 09:28:29.433 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-23 09:28:32.437 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-23 09:28:37.724 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-23 09:28:37.724 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Main Menu : 
+2023-06-23 09:29:17.439 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-23 09:29:17.440 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-23 09:29:17.440 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-23 09:29:17.440 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-23 09:29:17.440 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-23 09:29:24.824 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Main Menu ***** 
+2023-06-23 09:29:24.825 [main] INFO  repairshop.menu.MenuHelper - 
+ 1. Create New Account
+2023-06-23 09:29:24.825 [main] INFO  repairshop.menu.MenuHelper - 
+ 2. Login
+2023-06-23 09:29:24.825 [main] INFO  repairshop.menu.MenuHelper - 
+ 3. Work Request Enquiry
+2023-06-23 09:29:24.825 [main] INFO  repairshop.menu.MenuHelper - 
+ Enter selection : 
+2023-06-23 09:29:26.705 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-23 09:29:34.002 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-23 09:29:34.003 [main] INFO  repairshop.menu.MenuHelper - 
+
+ Do you want to go back to Main Menu : 

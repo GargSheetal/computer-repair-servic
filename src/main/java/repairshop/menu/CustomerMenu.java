@@ -29,7 +29,9 @@ public class CustomerMenu {
 		String email = requestCustomerEmail();
 		String phone = requestCustomerPhone();
 		Customer customer = new Customer(lastName, restOfName, email, phone);
-		return customerService.createCustomer(customer);
+		customerService.createCustomer(customer);
+		System.out.println("\nCustomer Details : \n" + customer.toString());
+		return customer;
 	}
 	
 	public Customer login() throws SQLException {
@@ -46,6 +48,7 @@ public class CustomerMenu {
 			customer = login();
 		}
 		logger.info("\nLogin Successful. Welcome " + customer.getRestOfName() + " " + customer.getLastName());
+		System.out.println("\nCustomer Details : \n" + customer.toString());
 		return customer;
 	}
 	

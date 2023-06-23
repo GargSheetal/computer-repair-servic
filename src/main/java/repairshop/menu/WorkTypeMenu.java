@@ -93,5 +93,9 @@ public class WorkTypeMenu {
 		logger.info(workType.toString());
 	}
 	
+	public void createWorkRequest() {
+		
+	}
+	
 }
 

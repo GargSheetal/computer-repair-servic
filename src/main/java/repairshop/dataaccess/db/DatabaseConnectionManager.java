@@ -22,7 +22,7 @@ public class DatabaseConnectionManager {
     }
     
     private void loadProperties() throws IOException {
-    	try(InputStream input = new FileInputStream("./src/main/resources/repairshop/db.properties")){
+    	try(InputStream input = new FileInputStream("./src/main/resources/db.properties")){
 	        Properties prop = new Properties();
 	        prop.load(input);
 	        this.url = prop.getProperty("url");
@@ -78,5 +78,4 @@ public class DatabaseConnectionManager {
         	connection.setAutoCommit(true);
         }
     }
-	
 }
