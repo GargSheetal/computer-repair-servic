@@ -1,21 +1,21 @@
 show databases;
 use computer_repair_service;
 select * from devices where device_type_id = 1;
-select * from work_request_appointments;
+select * from customers;
 desc device_brands;
--- INSERT into customer(last_name, rest_of_name, email, phone) 
+-- INSERT into customers (last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
 	('Potter', 'Harry', 'hp@gmail.com', '3456789012'),
 	('Parker', 'Peter', 'pp@gmail.com', '4567890123'),
 	('Jane', 'Mary', 'mj@gmail.com', '5678901234');
 
--- INSERT into device_brand(brand_name)
+-- INSERT into device_brands (brand_name)
 	values('Apple'),
     ('Samsung'),
     ('Microsoft'),
     ('Google');
 
--- INSERT into device_type(device_type_name, device_brand_id)
+-- INSERT into device_types (device_type_name, device_brand_id)
 	values('smartphone', 1),
     ('smartphone', 2),
     ('smartphone', 4),
@@ -27,7 +27,7 @@ desc device_brands;
     ('laptop', 4);
     
 -- ALTER TABLE device RENAME COLUMN device_category_id TO device_type_id;
--- INSERT into device(device_name, device_type_id)
+-- INSERT into devices (device_name, device_type_id)
 	values('iPhone 14', 1),
     ('iPhone 13', 1),
     ('Galaxy S20', 2),
@@ -48,7 +48,7 @@ desc device_brands;
     ('Chromebook 7', 9);
 
 -- ALTER table customer_device modify serial_number varchar(45); -- changed column type from int to varchar
--- INSERT into customer_device(customer_id, device_id, serial_number)
+-- INSERT into customer_devices (customer_id, device_id, serial_number)
 	values(1, 1,'iphone14-001'),
     (1, 13,'macbookpro-001'),
     (2, 3,'galaxys20-002'),
@@ -57,30 +57,30 @@ desc device_brands;
     (3, 17,'chromebook5-003'),
     (4, 11,'surface1-004');
 
--- INSERT into technician(last_name, rest_of_name, email, phone) 
+-- INSERT into technicians (last_name, rest_of_name, email, phone) 
 	values('Stark', 'Tony', 'ironman@marvel.com', '1112223333'),
     ('Rogers', 'Steve', 'captainamerica@marvel.com', '2223334444'),
     ('Thor', null, 'odinson@marvel.com', '3334445555');
        
--- INSERT into work_type(device_id, work_description, price)
+-- INSERT into work_types (device_id, work_description, price)
 	values(1, 'Screen Replacement', 200.00),
     (1, 'Battery Replacement', 70.00),
     (2, 'Malware Removal', 400.00);
     
--- INSERT into work_type(device_id, work_description, price)
+-- INSERT into work_types (device_id, work_description, price)
     values(3, 'Screen Replacement', 100.00);
     
--- INSERT into work_type_technician(work_type_id, technician_id, skill_level)
+-- INSERT into work_type_technicians (work_type_id, technician_id, skill_level)
 	values(1, 2, 1),
     (2, 3, 3),
     (3, 1, 2);
     
--- INSERT into work_type_technician(work_type_id, technician_id, skill_level)
+-- INSERT into work_type_technicians (work_type_id, technician_id, skill_level)
 	values(4, 2, 2);
     
 -- ALTER table service_request drop column status; -- dropped column
 -- ALTER table service_request modify amount decimal(10,2); -- made field nullable
--- INSERT into work_request(customer_device_id, work_type_id, created_timestamp, work_request_description)
+-- INSERT into work_requests (customer_device_id, work_type_id, created_timestamp, work_request_description)
 	values(1, 1, '2023-01-23 12:45:56', 'please do screen replacement for my iPhone14. Thanks Mark Shelton'),
     (2, 3, '2023-01-27 12:45:56', 'please do malware removal from my Macbook Pro. Thanks Mark Shelton'),
     (3, 4, '2023-02-15 12:45:56', 'please do screen replacement for my Galaxy S20. Thanks Mark Shelton');
@@ -91,14 +91,14 @@ desc device_brands;
     
 -- ALTER table service_request_appointment add service_request_appointment_id int NOT NULL AUTO_INCREMENT PRIMARY KEY; -- added a new column as primary key (not likely to be done in a real app)
 -- ALTER table service_request_appointment modify technician_notes varchar(400) -- made field nullable
--- INSERT into work_request_appointment(work_request_id, technician_id, appointment_timestamp)
+-- INSERT into work_request_appointments (work_request_id, technician_id, appointment_timestamp)
 	values(1, 2, '2023-01-25 11:00:00'),
     (1, 2, '2023-01-27 12:00:00'),
     (2, 1, '2023-01-29 11:00:00'),
 	(3, 2, '2023-02-18 11:00:00');
     
 -- ALTER TABLE work_request_payment RENAME COLUMN work_request_paymentId TO work_request_payment_id;
--- INSERT into work_request_payment(work_request_id, amount, payment_timestamp, payment_confirmation_number)
+-- INSERT into work_request_payments (work_request_id, amount, payment_timestamp, payment_confirmation_number)
 	values(1, 200.00, '2023-01-27 12:00:00', 'abc123xyz')
     
 -- UPDATE service_request 
