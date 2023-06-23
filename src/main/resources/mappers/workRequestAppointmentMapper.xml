@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace must be the packagename.interfaceName of the mapper interface-->
+<mapper namespace="repairshop.dataaccess.mapper.WorkRequestAppointmentMapper">
+	
+  <!-- property - field name in java class, column - column name in db table | type- model class packagename.classname-->
+  <!-- javaType - indicates the class that represents the associated object -->
+	<!-- resultMap - refers to the resultMap defined in the respective mapper XML file for WorkRequest and Technician -->
+  <resultMap id="workRequestAppointmentResultMap" type="repairshop.dataaccess.model.WorkRequestAppointment.WorkRequestAppointment" autoMapping="false" >
+	  <id property="workRequestAppointmentId" column="work_request_appointment_id" />
+	  <result property="appointmentTimestamp" column="appointment_timestamp" />
+	  <result property="technicianNotes" column="technician_notes" />
+	  <association property="workRequest" javaType="repairshop.dataaccess.model.WorkRequest.WorkRequest" resultMap="repairshop.dataaccess.mapper.WorkRequestMapper.workRequestResultMap"></association>
+	  <association property="technician" javaType="repairshop.dataaccess.model.Technician.Technician" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMap"></association>
+  </resultMap>
+  
+  <!-- provide mapper's namespace.id in resultMap -->
+  <select id="selectWorkRequestAppointmentById" resultMap="repairshop.dataaccess.mapper.WorkRequestAppointmentMapper.workRequestAppointmentResultMap">
+    SELECT * from work_request_appointments WHERE work_request_appointment_id = #{workRequestAppointmentId}
+  </select>
+  
+  <select id="selectWorkRequestAppointmentByAppointmentTimestamp" resultMap="repairshop.dataaccess.mapper.WorkRequestAppointmentMapper.workRequestAppointmentResultMap">
+    SELECT * from work_request_appointments WHERE appointment_timestamp = #{appointmentTimestamp}
+  </select>
+  
+  <insert id="addWorkRequestAppointment">
+    INSERT INTO work_request_appointments (work_request_id, technician_id, appointment_timestamp, technician_notes)
+    VALUES (#{workRequest.workRequestId}, #{technician.technicianId}, #{appointmentTimestamp}, #{technicianNotes})
+  </insert>
+  
+  <update id="updateWorkRequestAppointment">
+  	UPDATE work_request_appointments SET
+    work_request_id = #{workRequest.workRequestId},
+    technician_id = #{technician.technicianId},
+    appointment_timestamp = #{appointmentTimestamp},
+    technician_notes = #{technicianNotes}
+  	WHERE work_request_appointment_id = #{workRequestAppointmentId}
+  </update>
+  
+  <delete id="deleteWorkRequestAppointment">
+ 	DELETE from work_request_appointments 
+ 	WHERE work_request_appointment_id = #{workRequestAppointmentId}
+  </delete>
+  
+</mapper>

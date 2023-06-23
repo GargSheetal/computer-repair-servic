@@ -20,10 +20,12 @@ public class DeviceBrand {
 	@XmlElement(name = "brand_name")
 	private String brandName;
 
-	public DeviceBrand() {
-		
-	}
+	public DeviceBrand() {}
 	
+	public DeviceBrand(String brandName) {
+		this.brandName = brandName;
+	}
+
 	public DeviceBrand(int deviceBrandId, String brandName) {
 		this.deviceBrandId = deviceBrandId;
 		this.brandName = brandName;
@@ -49,7 +51,6 @@ public class DeviceBrand {
 		return ("DeviceBrand ID: " + this.getDeviceBrandId() + " | " +
 				"DeviceBrand Name: " + this.getBrandName()
 				);
-				
 	}
 
 }

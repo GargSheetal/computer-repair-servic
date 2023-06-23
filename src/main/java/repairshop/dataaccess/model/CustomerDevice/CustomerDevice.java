@@ -31,10 +31,14 @@ public class CustomerDevice {
 	@XmlElement(name="device")
 	private Device device = new Device();		// Foreign key reference
 	
-	public CustomerDevice() {
-		
-	}
+	public CustomerDevice() {}
 	
+	public CustomerDevice(String serialNumber, Customer customer, Device device) {
+		this.serialNumber = serialNumber;
+		this.customer = customer;
+		this.device = device;
+	}
+
 	public CustomerDevice(int customerDeviceId, String serialNumber, Customer customer, Device device) {
 		this.customerDeviceId = customerDeviceId;
 		this.serialNumber = serialNumber;
@@ -78,10 +82,14 @@ public class CustomerDevice {
 		return ("CustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
 				"Serail Number: " + this.getSerialNumber() + "\n" +
 				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
-				"Device ID: " + this.getDevice().getDeviceId() + "\n");
+				"Customer Last Name: " + this.getCustomer().getLastName() + "\n" +
+				"Customer Rest Of Name: " + this.getCustomer().getRestOfName() + "\n" +
+				"Customer Email: " + this.getCustomer().getEmail() + "\n" +
+				"Customer Phone: " + this.getCustomer().getPhone() + "\n" +
+				"Device ID: " + this.getDevice().getDeviceId() + "\n" +
+				"Device Name: " + this.getDevice().getDeviceName() + "\n");
 	}
 	
 }
-
 
 

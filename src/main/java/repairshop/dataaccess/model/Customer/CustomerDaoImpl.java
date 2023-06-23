@@ -31,7 +31,6 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}
 		return generatedId;
 	}
-
 	
 	public Customer getById(Connection connection, int customerId) throws SQLException {
 		Customer customer = null;
@@ -131,5 +130,4 @@ public class CustomerDaoImpl implements ICustomerDao {
 		}
 		return deletedId;
 	}
-
 }

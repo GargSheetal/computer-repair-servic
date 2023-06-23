@@ -92,5 +92,12 @@ public class WorkRequestAppointment {
 	public void setTechnicianNotes(String technicianNotes) {
 		this.technicianNotes = technicianNotes;
 	}
+
+	@Override
+	public String toString() {
+		return "WorkRequestAppointment [workRequestAppointmentId=" + workRequestAppointmentId + ", workRequest="
+				+ workRequest + ", technician=" + technician + ", appointmentTimestamp=" + appointmentTimestamp
+				+ ", technicianNotes=" + technicianNotes + "]";
+	}
 	
 }

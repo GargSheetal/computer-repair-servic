@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace must be the packagename.interfaceName of the mapper interface-->
+<mapper namespace="repairshop.dataaccess.mapper.TechnicianMapper">
+	
+  <!-- property - field name in java class, column - column name in db table | type- model class packagename.classname-->
+  <resultMap id="technicianResultMap" type="repairshop.dataaccess.model.Technician.Technician" autoMapping="false" >
+	  <id property="technicianId" column="technician_id" />
+	  <result property="lastName" column="last_name" />
+	  <result property="restOfName" column="rest_of_name" />
+	  <result property="email" column="email" />
+	  <result property="phone" column="phone" />
+  </resultMap>
+  
+  <!-- provide mapper's namespace.id in resultMap -->
+  <select id="selectTechnicianById" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMap">
+    SELECT * from technicians WHERE technician_id = #{technicianId}
+  </select>
+  
+  <select id="selectTechnicianByEmail" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMap">
+    SELECT * from technicians WHERE email = #{email}
+  </select>
+  
+  <select id="getAllTechnicians" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMap">
+    SELECT * from technicians
+  </select>
+  
+  <insert id="addTechnician">
+    INSERT INTO technicians (last_name, rest_of_name, email, phone)
+    VALUES (#{lastName}, #{restOfName}, #{email}, #{phone})
+  </insert>
+  
+  <update id="updateTechnician">
+  	UPDATE technicians SET
+    last_name = #{lastName},
+    rest_of_name = #{restOfName},
+    email = #{email},
+    phone = #{phone}
+  	WHERE technician_id = #{technicianId}
+  </update>
+  
+  <delete id="deleteTechnician">
+ 	DELETE from technicians 
+ 	WHERE technician_id = #{technicianId}
+  </delete>
+  
+</mapper>

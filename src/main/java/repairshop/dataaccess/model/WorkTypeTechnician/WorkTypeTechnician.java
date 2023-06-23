@@ -56,6 +56,11 @@ public class WorkTypeTechnician {
 
 	public void setTechnician(Technician technician) {
 		this.technician = technician;
+	}
+
+	@Override
+	public String toString() {
+		return "WorkTypeTechnician [skillLevel=" + skillLevel + ", workType=" + workType + ", technician=" + technician
+				+ "]";
 	};
-	
 }

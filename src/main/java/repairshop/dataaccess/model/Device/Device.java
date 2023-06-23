@@ -26,9 +26,7 @@ public class Device {
 	@XmlElement(name = "device_type")
 	private DeviceType deviceType = new DeviceType();	// Foreign key reference
 	
-	public Device() {
-		
-	}
+	public Device() {}
 	
 	public Device(int deviceId, String deviceName, DeviceType deviceType) {
 		this.deviceId = deviceId;
@@ -62,9 +60,11 @@ public class Device {
 	
 	@Override
 	public String toString() {
-		return ("Device ID: " + this.getDeviceId() + " | " +
-				"Device Name: " + this.getDeviceName() + " | " + 
-				"DeviceType ID: " + this.getDeviceType().getDeviceTypeId()
+		return ("Device ID: " + this.getDeviceId() + " \n" +
+				"Device Name: " + this.getDeviceName() + " \n" + 
+				"DeviceType ID: " + this.getDeviceType().getDeviceTypeId() + " \n" +
+				"DeviceType Name: " + this.getDeviceType().getDeviceTypeName() + " \n" +
+				"DeviceBrand ID: " + this.getDeviceType().getDeviceBrand().getDeviceBrandId()
 				);
 	}
 }

@@ -8,8 +8,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import repairshop.dataaccess.model.CustomerDevice.*;
 import repairshop.dataaccess.model.Customer.*;
+import repairshop.dataaccess.model.CustomerDevice.*;
 
 public class XmlJAXBParser {
 	

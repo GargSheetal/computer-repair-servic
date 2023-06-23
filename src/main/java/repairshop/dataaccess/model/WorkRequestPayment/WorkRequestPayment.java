@@ -92,5 +92,12 @@ public class WorkRequestPayment {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
+	@Override
+	public String toString() {
+		return "WorkRequestPayment [workRequestPaymentId=" + workRequestPaymentId + ", workRequest=" + workRequest
+				+ ", paymentConfirmationNumber=" + paymentConfirmationNumber + ", paymentTimestamp=" + paymentTimestamp
+				+ ", amount=" + amount + "]";
+	}
 	
 }
