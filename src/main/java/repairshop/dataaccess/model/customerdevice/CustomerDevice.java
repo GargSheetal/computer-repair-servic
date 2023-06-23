@@ -82,7 +82,12 @@ public class CustomerDevice {
 		return ("CustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
 				"Serail Number: " + this.getSerialNumber() + "\n" +
 				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
-				"Device ID: " + this.getDevice().getDeviceId() + "\n");
+				"Customer Last Name: " + this.getCustomer().getLastName() + "\n" +
+				"Customer Rest Of Name: " + this.getCustomer().getRestOfName() + "\n" +
+				"Customer Email: " + this.getCustomer().getEmail() + "\n" +
+				"Customer Phone: " + this.getCustomer().getPhone() + "\n" +
+				"Device ID: " + this.getDevice().getDeviceId() + "\n" +
+				"Device Name: " + this.getDevice().getDeviceName() + "\n");
 	}
 	
 }

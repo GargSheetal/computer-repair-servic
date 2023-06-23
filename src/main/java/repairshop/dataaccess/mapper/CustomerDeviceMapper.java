@@ -8,7 +8,7 @@ public interface CustomerDeviceMapper {
 	
 	CustomerDevice selectCustomerDeviceBySerialNumber(int serialNumber);
 	
-	CustomerDevice getCustomerDeviceById(int customerDeviceId);
+	CustomerDevice getCustomerDeviceDetailsById(int customerDeviceId);
 	
 	void addCustomerDevice(CustomerDevice customerDevice);
 	

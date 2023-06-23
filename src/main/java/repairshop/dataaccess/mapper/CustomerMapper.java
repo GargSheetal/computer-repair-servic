@@ -11,7 +11,7 @@ public interface CustomerMapper {
 	
 	Customer selectCustomerByEmail(String email);
 	
-	List<Customer> getAllCustomer();
+	List<Customer> getAllCustomers();
 	
 	void addCustomer(Customer customer);
 	

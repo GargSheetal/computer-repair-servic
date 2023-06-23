@@ -17,14 +17,14 @@
   
   <!-- provide mapper's namespace.id in resultMap -->
   <select id="selectCustomerById" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap">
-    SELECT * from customers where customer_id = #{id}
+    SELECT * from customers where customer_id = #{customerId}
   </select>
   
   <select id="selectCustomerByEmail" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap">
     SELECT * from customers where email = #{email}
   </select>
   
-  <select id="getAllCustomer" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap">
+  <select id="getAllCustomers" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap">
     SELECT * from customers
   </select>
   

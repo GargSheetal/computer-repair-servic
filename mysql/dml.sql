@@ -1,7 +1,7 @@
 show databases;
 use computer_repair_service;
 select * from devices where device_type_id = 1;
-select * from work_requests;
+select * from work_request_appointments;
 desc device_brands;
 -- INSERT into customer(last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
@@ -309,6 +309,20 @@ RENAME TO work_types;
 -- ALTER TABLE work_type_technician
 RENAME TO work_type_technicians;
 
+SELECT cd.customer_device_id,
+	  cd.serial_number,
+	  c.customer_id,
+	  c.last_name,
+	  c.rest_of_name,
+	  c.email,
+      c.phone,
+      d.device_id,
+      d.device_name,
+      d.device_type_id
+      FROM customer_devices cd
+      JOIN customers c ON cd.customer_id = c.customer_id
+      JOIN devices d ON cd.device_id = d.device_id
+      WHERE cd.customer_device_id = 2;
 
 
 

@@ -111,7 +111,7 @@ public class WorkRequest {
 	public Date getCompletedTimestamp() {
 		return completedTimestamp;
 	}
-
+	
 	public void setCompletedTimestamp(Date completedTimestamp) {
 		this.completedTimestamp = completedTimestamp;
 	}

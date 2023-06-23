@@ -15,7 +15,10 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mappers/customerMapper.xml"/>
-    <mapper class="repairshop.dataaccess.mapper.CustomerMapperJava"/>
+    <mapper resource="mappers/customerMapper.xml" />
+    <mapper resource="mappers/customerDeviceMapper.xml" />
+    <mapper resource="mappers/deviceMapper.xml" />
+    <mapper resource="mappers/deviceTypeMapper.xml" />
+    <mapper resource="mappers/deviceBrandMapper.xml" />
   </mappers>
 </configuration>

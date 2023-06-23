@@ -1,41 +1,34 @@
 package repairshop.main;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import repairshop.dataaccess.mapper.CustomerMapper;
-import repairshop.dataaccess.mapper.CustomerMapperJava;
 import repairshop.dataaccess.model.Customer.Customer;
+import repairshop.dataaccess.model.CustomerDevice.CustomerDevice;
+import repairshop.mybatis.service.CustomerDeviceMyBatisService;
+import repairshop.mybatis.service.CustomerMyBatisService;
 
 public class MyBatisRunner {
 
-	public static void main(String[] args) throws IOException {
-		try(InputStream stream = Resources.getResourceAsStream("mybatis-config.xml");
-			SqlSession session = new SqlSessionFactoryBuilder().build(stream).openSession(true)) {
+	public static void main(String[] args) throws IOException, SQLException {
 			
-			// provide 2 params - 1. namespace+id of the query from the CustomerMapper.xml file, 2. parameter for the query
-		//	Customer customer = session.selectOne("repairshop.dataaccess.model.Customer.mapper.CustomerMapper.selectCustomerById", 2);
-			CustomerMapper customerMapper = session.getMapper(CustomerMapper.class);
-			
-//			Customer customer = customerMapper.selectCustomerById(2);
-//			System.out.println("Customer details : \n" + customer);
-			
-//			Customer customer = new Customer("Osborne", "Harry", "ho234@gmail.com", "2222333344");
-//			customerMapper.addCustomer(customer);
-//			System.out.println(customerMapper.selectCustomerByEmail("ho234@gmail.com"));
-			
-//			CustomerMapperJava customerMapperJava = session.getMapper(CustomerMapperJava.class);
-//			Customer customer = customerMapperJava.selectCustomerById(1);
-//			System.out.println("Customer details : \n" + customer);
-			
-			List<Customer> customerList = customerMapper.getAllCustomer();
-			customerList.forEach(customer -> System.out.println(customer.toString()));
-		}
+		CustomerMyBatisService customerMyBatisService = new CustomerMyBatisService();
+		CustomerDeviceMyBatisService customerDeviceMyBatisService = new CustomerDeviceMyBatisService();
+		
+		Customer customer = customerMyBatisService.selectCustomerById(2);
+		System.out.println("Customer details : \n" + customer);
+		
+		System.out.println("------------------------ \n");
+		List<Customer> customerList = customerMyBatisService.getAllCustomers();
+		customerList.forEach(customer2 -> System.out.println(customer2.toString()));
+		
+		System.out.println("------------------------ \n");
+		CustomerDevice customerDevice = customerDeviceMyBatisService.getCustomerDeviceDetailsById(2);
+		System.out.println("Customer Device details : \n" + customerDevice.toString());
+	//	System.out.println("Customer Device details : \n" + customerDeviceMyBatisService.getCustomerDeviceDetailsById(2));
+		
+		customerMyBatisService.closeSession();
+		customerDeviceMyBatisService.closeSession();
 	}
-
 }

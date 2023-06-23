@@ -11,7 +11,7 @@
 	<resultMap id="customerDeviceResultMap" type="repairshop.dataaccess.model.CustomerDevice.CustomerDevice">
 		<id property="customerDeviceId" column="customer_device_id" />
 		<result property="serialNumber" column="serial_number" />
-		<association property="customer" javaType="repairshop.dataaccess.model.CustomerDevice.CustomerDevice" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap"></association>
+		<association property="customer" javaType="repairshop.dataaccess.model.Customer.Customer" resultMap="repairshop.dataaccess.mapper.CustomerMapper.customerResultMap"></association>
 		<association property="device" javaType="repairshop.dataaccess.model.Device.Device" resultMap="repairshop.dataaccess.mapper.DeviceMapper.deviceResultMap"></association>
 	</resultMap>
 	
@@ -34,11 +34,10 @@
 	  c.email,
       c.phone,
       d.device_id,
-      d.device_name,
-      d.device_type_id
+      d.device_name
       FROM customer_devices cd
-      INNER JOIN customers c ON cd.customer_id = c.customer_id
-      INNER JOIN devices d ON cd.device_id = d.device_id
+      JOIN customers c ON cd.customer_id = c.customer_id
+      JOIN devices d ON cd.device_id = d.device_id
       WHERE cd.customer_device_id = #{customerDeviceId}
   </select>
   
@@ -51,8 +50,13 @@
   	UPDATE customer_devices SET
     serial_number = #{serialNumber},
     customer_id = #{customer.customerId},
-    device_id = #{device.deviceId},
+    device_id = #{device.deviceId}
   	WHERE customer_device_id = #{customerDeviceId}
   </update>
+  
+   <delete id="deleteCustomerDevice">
+ 	DELETE from customer_devices 
+ 	WHERE customer_device_id = #{customerDeviceId}
+  </delete>
   
 </mapper>
