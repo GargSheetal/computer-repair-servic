@@ -20,7 +20,7 @@
     SELECT * from technicians WHERE technician_id = #{technicianId}
   </select>
   
-  <select id="selectTechnicianByEmail" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMapp">
+  <select id="selectTechnicianByEmail" resultMap="repairshop.dataaccess.mapper.TechnicianMapper.technicianResultMap">
     SELECT * from technicians WHERE email = #{email}
   </select>
   

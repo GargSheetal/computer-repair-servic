@@ -6,8 +6,10 @@ import java.util.List;
 
 import repairshop.dataaccess.model.Customer.Customer;
 import repairshop.dataaccess.model.CustomerDevice.CustomerDevice;
+import repairshop.dataaccess.model.Device.Device;
 import repairshop.mybatis.service.CustomerDeviceMyBatisService;
 import repairshop.mybatis.service.CustomerMyBatisService;
+import repairshop.mybatis.service.DeviceMyBatisService;
 
 public class MyBatisRunner {
 
@@ -15,6 +17,7 @@ public class MyBatisRunner {
 			
 		CustomerMyBatisService customerMyBatisService = new CustomerMyBatisService();
 		CustomerDeviceMyBatisService customerDeviceMyBatisService = new CustomerDeviceMyBatisService();
+		DeviceMyBatisService deviceMyBatisService = new DeviceMyBatisService();
 		
 		Customer customer = customerMyBatisService.selectCustomerById(2);
 		System.out.println("Customer details : \n" + customer);
@@ -25,10 +28,14 @@ public class MyBatisRunner {
 		
 		System.out.println("------------------------ \n");
 		CustomerDevice customerDevice = customerDeviceMyBatisService.getCustomerDeviceDetailsById(2);
-		System.out.println("Customer Device details : \n" + customerDevice.toString());
-	//	System.out.println("Customer Device details : \n" + customerDeviceMyBatisService.getCustomerDeviceDetailsById(2));
+		System.out.println("Customer Device details : \n" + customerDevice);
+		
+		System.out.println("------------------------ \n");
+		Device device = deviceMyBatisService.selectDeviceDetailsByDeviceId(2);
+		System.out.println("Device Details : \n" + device);
 		
 		customerMyBatisService.closeSession();
 		customerDeviceMyBatisService.closeSession();
+		deviceMyBatisService.closeSession();
 	}
 }

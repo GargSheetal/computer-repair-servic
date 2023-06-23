@@ -28,17 +28,17 @@ public class DeviceMyBatisService implements DeviceMapper {
     }
 	
 	@Override
-	public CustomerDevice selectDeviceById(int deviceId) {
+	public Device selectDeviceById(int deviceId) {
 		return deviceMapper.selectDeviceById(deviceId);
 	}
 
 	@Override
-	public CustomerDevice selectDeviceByDeviceName(String deviceName) {
+	public Device selectDeviceByDeviceName(String deviceName) {
 		return deviceMapper.selectDeviceByDeviceName(deviceName);
 	}
 
 	@Override
-	public CustomerDevice selectDeviceDetailsByDeviceId(int deviceId) {
+	public Device selectDeviceDetailsByDeviceId(int deviceId) {
 		return deviceMapper.selectDeviceDetailsByDeviceId(deviceId);
 	}
 

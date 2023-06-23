@@ -3,7 +3,6 @@
  */
 package repairshop.dataaccess.mapper;
 
-import repairshop.dataaccess.model.CustomerDevice.CustomerDevice;
 import repairshop.dataaccess.model.Device.Device;
 
 /**
@@ -12,11 +11,11 @@ import repairshop.dataaccess.model.Device.Device;
  */
 public interface DeviceMapper {
 
-	CustomerDevice selectDeviceById(int deviceId);
+	Device selectDeviceById(int deviceId);
 	
-	CustomerDevice selectDeviceByDeviceName(String deviceName);
+	Device selectDeviceByDeviceName(String deviceName);
 	
-	CustomerDevice selectDeviceDetailsByDeviceId(int deviceId);
+	Device selectDeviceDetailsByDeviceId(int deviceId);
 	
 	void addDevice(Device device);
 	
