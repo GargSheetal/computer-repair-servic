@@ -1,14 +1,2 @@
 /target/
 computer-repair-service/src/main/resources/repairservice/db.properties
-
-# Ignore .settings directory
-.settings/
-
-# Ignore .classpath file
-.classpath
-
-# Ignore .project file
-.project
-
-# Ignore .DS_Store file (created by macOS)
-.DS_Store
