@@ -60,9 +60,10 @@ public class DeviceType {
 	}
 	
 	public String toString() {
-		return ("DeviceType ID: " + this.getDeviceTypeId() + " | " +
-				"DeviceType Name: " + this.getDeviceTypeName() + " | " +
-				"DeviceBrand Id: " + this.getDeviceBrand().getDeviceBrandId()
+		return ("DeviceType ID: " + this.getDeviceTypeId() + "\n" +
+				"DeviceType Name: " + this.getDeviceTypeName() + "\n" +
+				"DeviceBrand Id: " + this.getDeviceBrand().getDeviceBrandId() + "\n" +
+				"DeviceBrand Id: " + this.getDeviceBrand().getBrandName()
 				);
 	}
 	

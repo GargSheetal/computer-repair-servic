@@ -8,6 +8,8 @@ public interface DeviceTypeMapper {
 	
 	DeviceType selectDeviceTypeByDeviceTypeName(String deviceTypeName);
 	
+	DeviceType selectDeviceTypeDetailsById(int deviceTypeId);
+	
 	void addDeviceType(DeviceType deviceType);
 	
 	void updateDeviceType(DeviceType deviceType);

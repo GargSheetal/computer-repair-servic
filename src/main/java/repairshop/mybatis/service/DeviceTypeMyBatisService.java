@@ -36,6 +36,11 @@ public class DeviceTypeMyBatisService implements DeviceTypeMapper {
 	public DeviceType selectDeviceTypeByDeviceTypeName(String deviceTypeName) {
 		return deviceTypeMapper.selectDeviceTypeByDeviceTypeName(deviceTypeName);
 	}
+	
+	@Override
+	public DeviceType selectDeviceTypeDetailsById(int deviceTypeId) {
+		return deviceTypeMapper.selectDeviceTypeDetailsById(deviceTypeId);
+	}
 
 	@Override
 	public void addDeviceType(DeviceType deviceType) {

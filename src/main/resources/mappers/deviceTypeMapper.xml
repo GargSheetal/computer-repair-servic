@@ -22,6 +22,17 @@
     SELECT * from device_types WHERE device_type_name = #{deviceTypeName}
   </select>
   
+  <select id="selectDeviceTypeDetailsById" resultMap="repairshop.dataaccess.mapper.DeviceTypeMapper.deviceTypeResultMap">
+    SELECT 
+    dt.device_type_id,
+    dt.device_type_name,
+    db.device_brand_id,
+    db.brand_name
+    FROM device_types dt 
+    INNER JOIN device_brands db ON dt.device_brand_id = db.device_brand_id
+    WHERE device_type_id = #{deviceTypeId}
+  </select>
+  
   <insert id="addDeviceType">
     INSERT INTO device_types (device_type_id, device_type_name, device_brand_id)
     VALUES (#{deviceTypeId}, #{deviceTypeName}, #{deviceBrand.deviceBrandId})
