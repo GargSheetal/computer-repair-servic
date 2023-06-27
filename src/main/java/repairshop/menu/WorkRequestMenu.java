@@ -150,7 +150,7 @@ public class WorkRequestMenu {
 	
 	public WorkType selectWorkType(Device device) throws SQLException {
 		List<WorkType> workTypeList = workService.getAllWorkTypesByDeviceId(device.getDeviceId());
-		logger.info("\nWork Types for [" + device.getDeviceName() + "]: ");
+		logger.info("\nWork Types for selected device : ");
 		workTypeList.forEach(workType -> System.out.println(workType.toString()));
 		
 		int workTypeId = requestInt("\nSelect Work Type ID to create Work Request: ");
@@ -225,6 +225,7 @@ public class WorkRequestMenu {
 		workRequestPayment.setWorkRequest(workRequest);
 		workRequestPayment.setPaymentConfirmationNumber(confirmationNumber);
 		workRequestPayment.setPaymentTimestamp(new Date(System.currentTimeMillis()));
+		workRequestPayment.setPaymentGateway(paymentSystem.getPaymentGatewayName());
 		return workRequestService.createWorkRequestPayment(workRequestPayment);
 	}
 }

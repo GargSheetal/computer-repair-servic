@@ -16,13 +16,14 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
     // create 
     public int create(Connection connection, WorkRequestPayment workRequestPayment) throws SQLException {
         int generatedId = -1;
-        String query = "INSERT into work_request_payments (work_request_id, payment_confirmation_number, payment_timestamp, amount) values(?, ?, ?, ?)";
+        String query = "INSERT into work_request_payments (work_request_id, payment_confirmation_number, payment_timestamp, amount, payment_gateway) values(?, ?, ?, ?, ?)";
         
         try(PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, workRequestPayment.getWorkRequest().getWorkRequestId());
             ps.setString(2, workRequestPayment.getPaymentConfirmationNumber());
             ps.setDate(3, (Date) workRequestPayment.getPaymentTimestamp());
             ps.setDouble(4, workRequestPayment.getAmount());
+            ps.setString(5, workRequestPayment.getPaymentGateway());
 
             int rowsAffected = ps.executeUpdate();
             System.out.println("\n" + rowsAffected + " row/s affected");

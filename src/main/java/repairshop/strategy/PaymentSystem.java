@@ -20,4 +20,12 @@ public class PaymentSystem {
 		}
 		return paymentStrategy.processPayment(amount);
 	}
+	
+	public String getPaymentGatewayName() {
+		if(paymentStrategy == null) {
+			throw new Error("No payment strategy is set.");
+		}
+		return paymentStrategy.getPaymentGatewayName();
+	}
+	
 }

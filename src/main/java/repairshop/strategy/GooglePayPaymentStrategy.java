@@ -15,6 +15,10 @@ public class GooglePayPaymentStrategy implements PaymentStrategy {
         this.googlePayId = googlePayId;
     }
     
+    public String getPaymentGatewayName() {
+    	return "GOOGLEPAY";
+    }
+    
 	@Override
 	public String processPayment(double amount) {
 		// Implementing GooglePay payment logic

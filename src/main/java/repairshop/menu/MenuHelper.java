@@ -36,7 +36,6 @@ public class MenuHelper {
 		CustomerDevice selectedCustomerDevice = workRequestMenu.selectExistingCustomerDevice(customer);
 		WorkType selectedWorkType = workRequestMenu.selectWorkType(selectedCustomerDevice.getDevice());
 		String workDescription = workRequestMenu.inputWorkDescription();
-		System.out.println("Input Work Description : " + workDescription);
 		WorkRequest createdWorkRequest = workRequestMenu.createNewWorkRequest(selectedCustomerDevice, selectedWorkType, workDescription);
 		System.out.println("\ncreatedWorkRequest...\n" + createdWorkRequest.toString());
 		PaymentStrategy selectedPaymentStrategy = workRequestMenu.selectPaymentStrategy();

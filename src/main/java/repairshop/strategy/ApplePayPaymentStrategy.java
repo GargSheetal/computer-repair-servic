@@ -15,6 +15,10 @@ public class ApplePayPaymentStrategy implements PaymentStrategy {
         this.applePayId = applePayId;
     }
     
+    public String getPaymentGatewayName() {
+    	return "APPLEPAY";
+    }
+    
 	@Override
 	public String processPayment(double amount) {
 		// Implementing ApplePay payment logic

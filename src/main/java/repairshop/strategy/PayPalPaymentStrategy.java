@@ -15,6 +15,10 @@ public class PayPalPaymentStrategy implements PaymentStrategy {
         this.paypalId = paypalId;
     }
 	
+    public String getPaymentGatewayName() {
+    	return "PAYPAL";
+    }
+    
 	@Override
 	public String processPayment(double amount) {
 		// Implement PayPal payment logic here

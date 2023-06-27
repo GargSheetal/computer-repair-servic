@@ -210,3 +210,66 @@ Work Types for [null]:
  3. Google Pay
 2023-06-27 00:43:45.870 [main] INFO  repairshop.menu.WorkRequestMenu - 
  4. Credit Card
+2023-06-27 01:18:29.270 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Work Request Main Menu ***** 
+2023-06-27 01:18:29.285 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Create New Account
+2023-06-27 01:18:29.285 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Login
+2023-06-27 01:18:32.376 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-27 01:18:43.090 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-27 01:18:45.408 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ ***** Customer Devices List ***** 
+2023-06-27 01:18:59.156 [main] INFO  repairshop.menu.WorkRequestMenu - 
+Work Types for [null]: 
+2023-06-27 01:19:27.112 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ ***** Select Payment Option ***** 
+2023-06-27 01:19:27.113 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Paypal
+2023-06-27 01:19:27.113 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Apple Pay
+2023-06-27 01:19:27.113 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 3. Google Pay
+2023-06-27 01:19:27.114 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 4. Credit Card
+2023-06-27 01:32:57.157 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Work Request Main Menu ***** 
+2023-06-27 01:32:57.173 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Create New Account
+2023-06-27 01:32:57.173 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Login
+2023-06-27 01:33:04.129 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Work Request Main Menu ***** 
+2023-06-27 01:33:04.145 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Create New Account
+2023-06-27 01:33:04.145 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Login
+2023-06-27 01:33:05.507 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-27 01:33:10.800 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-27 01:33:13.017 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ ***** Customer Devices List ***** 
+2023-06-27 01:35:11.114 [main] INFO  repairshop.menu.MenuHelper - 
+ ***** Presenting Work Request Main Menu ***** 
+2023-06-27 01:35:11.129 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Create New Account
+2023-06-27 01:35:11.129 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Login
+2023-06-27 01:35:12.168 [main] INFO  repairshop.menu.CustomerMenu - Enter Email: 
+2023-06-27 01:35:17.117 [main] INFO  repairshop.menu.CustomerMenu - 
+Login Successful. Welcome Mark Shelton
+2023-06-27 01:35:19.509 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ ***** Customer Devices List ***** 
+2023-06-27 01:35:26.447 [main] INFO  repairshop.menu.WorkRequestMenu - 
+Work Types for selected device : 
+2023-06-27 01:35:42.414 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ ***** Select Payment Option ***** 
+2023-06-27 01:35:42.416 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 1. Paypal
+2023-06-27 01:35:42.416 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 2. Apple Pay
+2023-06-27 01:35:42.416 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 3. Google Pay
+2023-06-27 01:35:42.417 [main] INFO  repairshop.menu.WorkRequestMenu - 
+ 4. Credit Card

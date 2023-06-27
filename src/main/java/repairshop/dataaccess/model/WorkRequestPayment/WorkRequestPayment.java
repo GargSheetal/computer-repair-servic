@@ -42,15 +42,20 @@ public class WorkRequestPayment {
 	@XmlElement(name = "amount")
 	private double amount;
 	
+	@JsonProperty("payment_gateway")
+	@XmlElement(name = "payment_gateway")
+	private String paymentGateway;
+	
 	public WorkRequestPayment() {}
 
 	public WorkRequestPayment(int workRequestPaymentId, WorkRequest workRequest, String paymentConfirmationNumber,
-			Date paymentTimestamp, double amount) {
+			Date paymentTimestamp, double amount, String paymentGateway) {
 		this.workRequestPaymentId = workRequestPaymentId;
 		this.workRequest = workRequest;
 		this.paymentConfirmationNumber = paymentConfirmationNumber;
 		this.paymentTimestamp = paymentTimestamp;
 		this.amount = amount;
+		this.paymentGateway = paymentGateway;
 	}
 
 	public int getWorkRequestPaymentId() {
@@ -93,11 +98,19 @@ public class WorkRequestPayment {
 		this.amount = amount;
 	}
 
+	public String getPaymentGateway() {
+		return paymentGateway;
+	}
+
+	public void setPaymentGateway(String paymentGateway) {
+		this.paymentGateway = paymentGateway;
+	}
+
 	@Override
 	public String toString() {
-		return "WorkRequestPayment [workRequestPaymentId=" + workRequestPaymentId + ", workRequest=" + workRequest
-				+ ", paymentConfirmationNumber=" + paymentConfirmationNumber + ", paymentTimestamp=" + paymentTimestamp
-				+ ", amount=" + amount + "]";
+		return "\nWorkRequestPayment [workRequestPaymentId=" + this.workRequestPaymentId + ", workRequest=" + this.workRequest.getWorkRequestId()
+				+ ", paymentConfirmationNumber=" + this.paymentConfirmationNumber + ", paymentTimestamp=" + this.paymentTimestamp
+				+ ", amount=" + this.amount + ", paymentGateway=" + this.paymentGateway + "]";
 	}
 	
 }

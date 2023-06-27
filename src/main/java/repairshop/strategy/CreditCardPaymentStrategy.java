@@ -13,6 +13,10 @@ public class CreditCardPaymentStrategy implements PaymentStrategy {
     public CreditCardPaymentStrategy(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
+    
+    public String getPaymentGatewayName() {
+    	return "CREDITCARD";
+    }
 
     @Override
     public String processPayment(double amount) {
