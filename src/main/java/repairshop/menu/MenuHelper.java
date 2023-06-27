@@ -2,6 +2,8 @@ package repairshop.menu;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,11 +12,37 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
+import repairshop.dataaccess.model.Customer.Customer;
+import repairshop.dataaccess.model.CustomerDevice.CustomerDevice;
+import repairshop.dataaccess.model.DeviceBrand.DeviceBrand;
+import repairshop.dataaccess.model.WorkRequest.WorkRequest;
+import repairshop.dataaccess.model.WorkRequestPayment.WorkRequestPayment;
+import repairshop.dataaccess.model.WorkType.WorkType;
+import repairshop.service.CustomerDeviceService;
+import repairshop.service.WorkRequestService;
+import repairshop.strategy.PaymentStrategy;
+
 
 public class MenuHelper {
 
 	private static Scanner scanner = new Scanner(System.in);
 	private static final Logger logger = LogManager.getLogger(MenuHelper.class);
+	
+	public static void workRequestMainMenu() throws SQLException, IOException {
+		logger.info("\n ***** Presenting Work Request Main Menu ***** ");
+		
+		WorkRequestMenu workRequestMenu = new WorkRequestMenu();
+		Customer customer = workRequestMenu.getCustomer();
+		CustomerDevice selectedCustomerDevice = workRequestMenu.selectExistingCustomerDevice(customer);
+		WorkType selectedWorkType = workRequestMenu.selectWorkType(selectedCustomerDevice.getDevice());
+		String workDescription = workRequestMenu.inputWorkDescription();
+		System.out.println("Input Work Description : " + workDescription);
+		WorkRequest createdWorkRequest = workRequestMenu.createNewWorkRequest(selectedCustomerDevice, selectedWorkType, workDescription);
+		System.out.println("\ncreatedWorkRequest...\n" + createdWorkRequest.toString());
+		PaymentStrategy selectedPaymentStrategy = workRequestMenu.selectPaymentStrategy();
+		WorkRequestPayment createdWorkRequestPayment = workRequestMenu.createNewWorkRequestPayment(createdWorkRequest, selectedWorkType.getPrice(), selectedPaymentStrategy);
+		System.out.println("\ncreatedWorkRequestPayment...\n" + createdWorkRequestPayment.toString());
+	}
 	
 	public static void mainMenu() throws SQLException, IOException {
 		logger.info("\n ***** Presenting Main Menu ***** ");

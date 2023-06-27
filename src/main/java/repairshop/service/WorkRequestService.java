@@ -52,6 +52,28 @@ public class WorkRequestService {
 		return createdWorkRequest;
 	}
 	
+	public WorkRequestPayment createWorkRequestPayment(WorkRequestPayment workRequestPayment) throws SQLException {
+		Connection connection = null;
+		WorkRequestPayment createdWorkRequestPayment = null;
+		try {
+            connection = this.connectionManager.getConnection();
+            this.connectionManager.beginTransaction(connection);
+
+            // business logic
+            int workRequestPaymentId = workRequestPaymentDaoImpl.create(connection, workRequestPayment);
+            createdWorkRequestPayment = workRequestPaymentDaoImpl.getById(connection, workRequestPaymentId);
+
+            this.connectionManager.commitTransaction(connection);
+        } catch (SQLException e) {
+        	this.connectionManager.rollbackTransaction(connection);
+            throw e;
+        } finally {
+        	this.connectionManager.closeConnection(connection);
+        }
+		System.out.println("Work Request Payment created successfully");
+		return createdWorkRequestPayment;
+	}
+	
 	
 	public WorkRequest getWorkRequestById(int workRequestId) throws SQLException {
 		Connection connection = null;

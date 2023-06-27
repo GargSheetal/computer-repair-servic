@@ -55,6 +55,15 @@ public class WorkRequest {
 	private String workRequestDescription;
 	
 	public WorkRequest() {}
+	
+	public WorkRequest(int workRequestId, WorkType workType, CustomerDevice customerDevice, Date createdTimestamp,
+			String workRequestDescription) {
+		this.workRequestId = workRequestId;
+		this.workType = workType;
+		this.customerDevice = customerDevice;
+		this.createdTimestamp = createdTimestamp;
+		this.workRequestDescription = workRequestDescription;
+	}
 
 	public WorkRequest(int workRequestId, WorkType workType, CustomerDevice customerDevice, Date createdTimestamp,
 			Date lastUpdatedTimestamp, Date completedTimestamp, double amount, String workRequestDescription) {

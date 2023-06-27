@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import repairshop.dataaccess.model.WorkRequest.WorkRequest;
+import repairshop.dataaccess.model.WorkRequest.WorkRequestAdapter;
+
 public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
     // create 
     public int create(Connection connection, WorkRequestPayment workRequestPayment) throws SQLException {
@@ -40,6 +43,25 @@ public class WorkRequestPaymentDaoImpl implements IWorkRequestPaymentDao {
         
         try(PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, workRequestId);
+            
+            try(ResultSet resultSet = ps.executeQuery()){
+                if (resultSet.next()) {
+                    WorkRequestPaymentAdapter workRequestPaymentAdapter = new WorkRequestPaymentAdapter();
+                    workRequestPayment = workRequestPaymentAdapter.adaptFromDb(resultSet);
+                }
+            }
+            
+        }
+        return workRequestPayment;
+    }
+    
+ // getById
+    public WorkRequestPayment getById(Connection connection, int workRequestPaymentId) throws SQLException {
+        WorkRequestPayment workRequestPayment = null;
+        String query = "SELECT * from work_request_payments where work_request_payment_id=?";
+        
+        try(PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, workRequestPaymentId);
             
             try(ResultSet resultSet = ps.executeQuery()){
                 if (resultSet.next()) {
