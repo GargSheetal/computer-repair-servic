@@ -59,11 +59,18 @@ public class DeviceType {
 		this.deviceBrand = deviceBrand;
 	}
 	
-	public String toString() {
+	public String toStringWithJoins() {
 		return ("DeviceType ID: " + this.getDeviceTypeId() + "\n" +
 				"DeviceType Name: " + this.getDeviceTypeName() + "\n" +
 				"DeviceBrand Id: " + this.getDeviceBrand().getDeviceBrandId() + "\n" +
-				"DeviceBrand Id: " + this.getDeviceBrand().getBrandName()
+				"DeviceBrand Name: " + this.getDeviceBrand().getBrandName()
+				);
+	}
+	
+	public String toString() {
+		return ("DeviceType ID: " + this.getDeviceTypeId() + "\n" +
+				"DeviceType Name: " + this.getDeviceTypeName() + "\n" +
+				"DeviceBrand Id: " + this.getDeviceBrand().getDeviceBrandId()
 				);
 	}
 	

@@ -78,8 +78,8 @@ public class CustomerDevice {
 		this.device = device;
 	}
 	
-	public String toString() {
-		return ("CustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
+	public String toStringWithJoins() {
+		return ("\nCustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
 				"Serail Number: " + this.getSerialNumber() + "\n" +
 				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
 				"Customer Last Name: " + this.getCustomer().getLastName() + "\n" +
@@ -90,6 +90,12 @@ public class CustomerDevice {
 				"Device Name: " + this.getDevice().getDeviceName() + "\n");
 	}
 	
+	public String toString() {
+		return ("\nCustomerDevice ID: " + this.getCustomerDeviceId() + "\n" +
+				"Serail Number: " + this.getSerialNumber() + "\n" +
+				"Customer ID: " + this.getCustomer().getCustomerId() + "\n" +
+				"Device ID: " + this.getDevice().getDeviceId()
+				);
+	}
 }
-
 

@@ -46,25 +46,34 @@ public class WorkRequest {
 	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date completedTimestamp;
 	
-	@JsonProperty("amount")
-	@XmlElement(name = "amount")
-	private double amount;
+//	@JsonProperty("amount")
+//	@XmlElement(name = "amount")
+//	private double amount;
 	
 	@JsonProperty("work_request_description")
 	@XmlElement(name = "work_request_description")
 	private String workRequestDescription;
 	
 	public WorkRequest() {}
+	
+	public WorkRequest(int workRequestId, WorkType workType, CustomerDevice customerDevice, Date createdTimestamp,
+			String workRequestDescription) {
+		this.workRequestId = workRequestId;
+		this.workType = workType;
+		this.customerDevice = customerDevice;
+		this.createdTimestamp = createdTimestamp;
+		this.workRequestDescription = workRequestDescription;
+	}
 
 	public WorkRequest(int workRequestId, WorkType workType, CustomerDevice customerDevice, Date createdTimestamp,
-			Date lastUpdatedTimestamp, Date completedTimestamp, double amount, String workRequestDescription) {
+			Date lastUpdatedTimestamp, Date completedTimestamp, String workRequestDescription) {
 		this.workRequestId = workRequestId;
 		this.workType = workType;
 		this.customerDevice = customerDevice;
 		this.createdTimestamp = createdTimestamp;
 		this.lastUpdatedTimestamp = lastUpdatedTimestamp;
 		this.completedTimestamp = completedTimestamp;
-		this.amount = amount;
+	//	this.amount = amount;
 		this.workRequestDescription = workRequestDescription;
 	}
 
@@ -116,13 +125,13 @@ public class WorkRequest {
 		this.completedTimestamp = completedTimestamp;
 	}
 
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+//	public double getAmount() {
+//		return amount;
+//	}
+//
+//	public void setAmount(double amount) {
+//		this.amount = amount;
+//	}
 
 	public String getWorkRequestDescription() {
 		return workRequestDescription;
@@ -134,10 +143,14 @@ public class WorkRequest {
 
 	@Override
 	public String toString() {
-		return "WorkRequest [workRequestId=" + workRequestId + ", workType=" + workType + ", customerDevice="
-				+ customerDevice + ", createdTimestamp=" + createdTimestamp + ", lastUpdatedTimestamp="
-				+ lastUpdatedTimestamp + ", completedTimestamp=" + completedTimestamp + ", amount=" + amount
-				+ ", workRequestDescription=" + workRequestDescription + "]";
+		return "\nWorkRequest [workRequestId=" + this.workRequestId 
+				+ ", customerDevice=" + this.customerDevice.getCustomerDeviceId() 
+				+ ", workType=" + this.workType.getWorkTypeId() 
+				+ ", workRequestDescription=" + this.workRequestDescription
+				+ ", createdTimestamp=" + this.createdTimestamp
+				+ ", lastUpdatedTimestamp=" + this.lastUpdatedTimestamp
+				+ ", completedTimestamp=" + this.completedTimestamp
+				+ "]";
 	}
 	
 }

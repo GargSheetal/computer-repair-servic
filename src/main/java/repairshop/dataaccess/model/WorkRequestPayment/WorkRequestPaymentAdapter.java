@@ -13,6 +13,7 @@ public class WorkRequestPaymentAdapter{
             workRequestPayment.setPaymentConfirmationNumber(record.getString("payment_confirmation_number"));
             workRequestPayment.setPaymentTimestamp(record.getTimestamp("payment_timestamp"));
             workRequestPayment.setAmount(record.getDouble("amount"));
+            workRequestPayment.setPaymentGateway(record.getString("payment_gateway"));
             return workRequestPayment;
         }
 }

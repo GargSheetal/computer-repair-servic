@@ -31,15 +31,15 @@ public class MyBatisRunner {
 		
 		System.out.println("------------------------ \n");
 		CustomerDevice customerDevice = customerDeviceMyBatisService.getCustomerDeviceDetailsById(2);
-		System.out.println("Customer Device details : \n" + customerDevice);
+		System.out.println("Customer Device details : \n" + customerDevice.toStringWithJoins());
 		
 		System.out.println("------------------------ \n");
 		Device device = deviceMyBatisService.selectDeviceDetailsByDeviceId(2);
-		System.out.println("Device Details : \n" + device);
+		System.out.println("Device Details : \n" + device.toStringWithJoins());
 		
 		System.out.println("\n------------------------ \n");
 		DeviceType deviceType = deviceTypeMyBatisService.selectDeviceTypeDetailsById(3);
-		System.out.println("DeviceType Details : \n" + deviceType);
+		System.out.println("DeviceType Details : \n" + deviceType.toStringWithJoins());
 		
 		customerMyBatisService.closeSession();
 		customerDeviceMyBatisService.closeSession();

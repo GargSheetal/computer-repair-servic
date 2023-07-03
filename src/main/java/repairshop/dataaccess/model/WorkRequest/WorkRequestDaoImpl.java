@@ -13,14 +13,13 @@ public class WorkRequestDaoImpl implements IWorkRequestDao {
     // create
     public int create(Connection connection, WorkRequest workRequest) throws SQLException {
         int generatedId = -1;
-        String query = "INSERT into work_requests (work_type_id, customer_device_id, work_request_description, created_timestamp, last_updated_timestamp) values(?, ?, ?, ?, ?)";
+        String query = "INSERT into work_requests (work_type_id, customer_device_id, work_request_description, created_timestamp) values(?, ?, ?, ?)";
         
         try(PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, workRequest.getWorkType().getWorkTypeId());
             ps.setInt(2, workRequest.getCustomerDevice().getCustomerDeviceId());
             ps.setString(3,  workRequest.getWorkRequestDescription());
             ps.setDate(4,  (Date) workRequest.getCreatedTimestamp());
-            ps.setDate(5,  (Date) workRequest.getLastUpdatedTimestamp());
 
             int rowsAffected = ps.executeUpdate();
             System.out.println("\n" + rowsAffected + " row/s affected");

@@ -58,13 +58,20 @@ public class Device {
 		this.deviceType = deviceType;
 	}
 	
-	@Override
-	public String toString() {
+	public String toStringWithJoins() {
 		return ("Device ID: " + this.getDeviceId() + " \n" +
 				"Device Name: " + this.getDeviceName() + " \n" + 
 				"DeviceType ID: " + this.getDeviceType().getDeviceTypeId() + " \n" +
 				"DeviceType Name: " + this.getDeviceType().getDeviceTypeName() + " \n" +
 				"DeviceBrand ID: " + this.getDeviceType().getDeviceBrand().getDeviceBrandId()
+				);
+	}
+	
+	@Override
+	public String toString() {
+		return ("Device ID: " + this.getDeviceId() + " \n" +
+				"Device Name: " + this.getDeviceName() + " \n" + 
+				"DeviceType ID: " + this.getDeviceType().getDeviceTypeId()
 				);
 	}
 }

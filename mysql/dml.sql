@@ -1,7 +1,7 @@
 show databases;
 use computer_repair_service;
-select * from devices where device_type_id = 1;
-select * from work_types;
+select * from devices;
+select * from work_requests;
 desc device_brands;
 -- INSERT into customers (last_name, rest_of_name, email, phone) 
 	values('Shelton', 'Mark',  'ms@gmail.com', '2345645678'),
@@ -333,4 +333,6 @@ SELECT
     INNER JOIN device_brands db ON dt.device_brand_id = db.device_brand_id
     WHERE device_type_id = 3;
 
-
+-- ALTER table work_request_payments ADD column payment_gateway varchar(50);
+update  work_request_payments SET payment_gateway = 'PAYPAL' WHERE work_request_payment_id = 1;
+ 
